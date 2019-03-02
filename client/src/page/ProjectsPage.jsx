@@ -1,10 +1,11 @@
 import React from 'react';
+import MainLayout from "components/layout/main/MainLayout"
 
 const ProjectsPage = () => {
   return (
-    <div>
+    <MainLayout>
       ProjectsPage
-    </div>
+    </MainLayout>
   )
 }
 export default ProjectsPage;

@@ -1,0 +1,39 @@
+.Navigation {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translate(-50%);
+  &__ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+  }
+  &__li {
+    margin: 10px 0;
+    padding: 10px;
+  }
+  &__a {
+    color: #fff;
+    font-size: 20px;
+    transform: scale(.85);
+    transition: transform 0.3s linear;
+    font-weight: 700;
+    padding: 0.475rem 0.95rem;
+    border-color: #fff;
+    &--active {
+      border-color: #fff;
+      background: #b1ff1e;
+      color: black;
+      transform: scale(1);
+      transition: transform 0.3s linear;
+    }
+  }
+  &__a:hover {
+    border-color: #fff;
+    transform: scale(1);
+    transition: transform 0.3s linear;
+    background: #b1ff1e;
+    color: black;
+  }
+}
