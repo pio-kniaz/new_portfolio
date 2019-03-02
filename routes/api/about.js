@@ -15,30 +15,38 @@ const aboutValidationFields = require("../../validation/AboutFields");
 //     .then((aboutResp) => res.json(aboutResp))
 //     .catch((err) => res.status(400).send(err))
 // })
-
+router.get("/about",(req,res) => {
+  About.find()
+  .then((aboutResp) => {
+    res.json(aboutResp)
+  })
+  .catch((error)=> {
+    res.status(400).send({ message: 'Unable to retrive data' })
+  })
+})
 router.put("/about/:id",(req,res) => {
   const { errors, isValid } = aboutValidationFields(req.body);
   // Check validation Field
   if (!isValid) {
     return res.status(400).json(errors);
   }
-  const idToFound = req.params.id;
-
-  About.findById(idToFound,((err,foundedAboutObj) => {
-    if (err) {
-      res.status(400).send(err);
-    }
-    foundedAboutObj.title = req.body.title;
-    foundedAboutObj.topDescription = req.body.topDescription;
-    foundedAboutObj.bottomDescription = req.body.bottomDescription;
-    foundedAboutObj.updated = new Date();
-    foundedAboutObj.save((err)=>{
-      if (err) {
-        res.status(400).send(err)
-      }
-      res.json({message:'About Page Updated',foundedAboutObj})
+  const idToFind = req.params.id;
+  About.findById(idToFind)
+    .then((foundedAboutObj) => {
+      foundedAboutObj.title = req.body.title;
+      foundedAboutObj.topDescription = req.body.topDescription;
+      foundedAboutObj.bottomDescription = req.body.bottomDescription;
+      foundedAboutObj.updated = new Date();
+      foundedAboutObj.save((error)=>{
+        if (error) {
+          res.status(400).send(error)
+        }
+        res.json({message:'About Page Updated',foundedAboutObj})
+      })
     })
-  }))
+    .catch((error)=> {
+      res.status(400).send(error);
+    })
 })
 
 module.exports = router;
