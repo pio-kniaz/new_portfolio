@@ -19,8 +19,12 @@
   },
   "homepage": "https://github.com/pio-kniaz/new_portfolio#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "concurrently": "^4.1.0",
     "express": "^4.16.4",
-    "save": "^2.3.3"
+    "is-empty": "^1.2.0",
+    "mongoose": "^5.4.16",
+    "save": "^2.3.3",
+    "validator": "^10.11.0"
   }
 }
