@@ -6,12 +6,13 @@ import Navigation from "components/layout/navigation/Navigation";
 const MainLayout = props => {
   const { children } = props;
   return (
-    <div className="MainLayout">
-      <Navigation />
-      <Particles params={particleOption}>
+    <>
+      <Particles className="Particles" params={particleOption} />
+      <div className="MainLayout">
+        <Navigation />
         {children}
-      </Particles>
-    </div>
+      </div>
+    </>
   );
 };
 export default MainLayout;

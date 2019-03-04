@@ -1,0 +1,29 @@
+.About {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  color: #fff;
+  text-align: center;
+  &__content {
+    min-width: 800px;
+    margin: auto;
+  }
+  &__syntax {
+    color: #a7ff00;
+  }
+  &__title {
+    text-align: center;
+  }
+  &__descritpion {
+    font-size: 20px;
+    font-weight: bold;
+    &--top {
+      font-size: 24px;
+      letter-spacing: 1px;
+    }
+    &--bottom {
+      font-size: 24px;
+      letter-spacing: 1px;
+    }
+  }
+}
