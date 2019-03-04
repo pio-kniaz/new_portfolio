@@ -1,8 +1,10 @@
 const express = require("express");
 const { mongoose } = require("./db/mongoose.js");
+const cors = require('cors')
 const app = express();
 const about = require("./routes/api/about");
 // Body Parserr Middleware
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // Routes

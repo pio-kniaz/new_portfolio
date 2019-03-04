@@ -1,0 +1,22 @@
+.btn__green {
+  color: black;
+  font-size: 20px;
+  transform: scale(.85);
+  transition: transform 0.3s linear;
+  font-weight: 700;
+  padding: 0.475rem 0.95rem;
+  border-color: #fff;
+  background: #b1ff1e;
+  &--lg {
+    padding: 0.5rem 1rem;
+    min-width: 100px;
+    font-size: 25px;
+  }
+  &:hover {
+    border-color: #fff;
+    transform: scale(1);
+    transition: transform 0.3s linear;
+    background: #b1ff1e;
+    color: black;
+  }
+}
