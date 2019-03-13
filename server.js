@@ -3,13 +3,16 @@ const { mongoose } = require("./db/mongoose.js");
 const cors = require('cors')
 const app = express();
 const about = require("./routes/api/about");
+const project = require("./routes/api/project");
 // Body Parserr Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // Routes
-// about aoute
+// about route
 app.use("/api/",about);
+// project route
+app.use("/api/",project);
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => console.log(`server is running on port: ${PORT}`));
