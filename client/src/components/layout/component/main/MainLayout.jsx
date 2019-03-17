@@ -1,7 +1,7 @@
 import React from "react";
 import Particles from "react-particles-js";
 import { particleOption } from "data/particles/particlesData";
-import Navigation from "components/layout/navigation/Navigation";
+import NavigationContainer from "components/layout/container/NavigationContainer";
 
 const MainLayout = props => {
   const { children } = props;
@@ -9,7 +9,7 @@ const MainLayout = props => {
     <>
       <Particles className="Particles" params={particleOption} />
       <div className="MainLayout">
-        <Navigation />
+        <NavigationContainer />
         {children}
       </div>
     </>
