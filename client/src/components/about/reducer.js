@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   about: {
-    aboutData: null,
+    aboutData: [],
     aboutRequest: false,
     aboutFailure: false
   }

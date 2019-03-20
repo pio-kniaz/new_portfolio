@@ -7,10 +7,12 @@ class About extends React.Component {
   }
   render() {
     const {
-      about: { aboutData, aboutFailure, aboutRequest }
+      about: {
+        aboutData,
+        aboutFailure,
+      }
     } = this.props;
-    console.log(aboutData, "aboutData");
-    console.log(this.props);
+    console.log(aboutData,'aboutData');
     return (
       <section className="About">
         {aboutData && !aboutFailure && (
@@ -19,9 +21,13 @@ class About extends React.Component {
               {`Hey I'm`} <span className="About__syntax">{`<`}</span>Piotr
               <span className="About__syntax">{`>`}</span>
             </h1>
-            <p className="lead About__descritpion About__descritpion--top ">{aboutData.topDescription}</p>
+            <p className="lead About__descritpion About__descritpion--top ">
+              {aboutData.topDescription}
+            </p>
             <hr className="my-4" />
-            <p className="About__descritpion About__descritpion--bottom">{aboutData.bottomDescription}</p>
+            <p className="About__descritpion About__descritpion--bottom">
+              {aboutData.bottomDescription}
+            </p>
             <p className="lead">
               <Link
                 to="/contact"
