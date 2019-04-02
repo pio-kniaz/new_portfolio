@@ -60,7 +60,7 @@ export const clearLoggedUser = () => {
 
 // CMS
 export const getAboutCMS = () => async dispatch => {
-  const { data } = await axios.get(`${api._baseURL}/about`);
+  const response = await axios.get(`${api._baseURL}/about`);
   dispatch({
     type: GET_ABOUT_CMS_DATA_PENDING,
     payload: true,
@@ -68,7 +68,7 @@ export const getAboutCMS = () => async dispatch => {
   try {
     dispatch({
       type: GET_ABOUT_CMS_DATA_FULFILLED,
-      payload: data,
+      payload: response.data,
     });
   } catch (e) {
     dispatch({
@@ -78,15 +78,22 @@ export const getAboutCMS = () => async dispatch => {
   }
 };
 
-export const updateAboutCMS = (filed,id) => async dispatch => {
-  const { data } = await axios.put(`${api._baseURL}/about/${id}`,filed);
+export const updateAboutCMS = (obj,id) => async dispatch => {
+  console.log(obj,'obj');
+  const { data } = await axios.put(`${api._baseURL}/about/${id}`,obj);
   dispatch({
     type: UPDATE_ABOUT_CMS_DATA_PENDING,
     payload: true,
   })
   try {
-    console.log(data,'data');
+    dispatch({
+      type: UPDATE_ABOUT_CMS_DATA_FULFILLED,
+      payload: data,
+    })
   } catch (e) {
-    console.log(e.response);
+    dispatch({
+      type: UPDATE_ABOUT_CMS_DATA_REJECTED,
+      payload:e
+    })
   }
 }

@@ -24,7 +24,12 @@ export const reducer = (state = initialState, action) => {
     case GET_ABOUT_CMS_DATA_FULFILLED:
       const reducedData = action.payload.reduce((acc, item) => {
         return {
-          ...item
+          aboutCMSDataId: item._id,
+          ...item.dataResponse.reduce((acc, elem) => {
+            return {
+              ...elem
+            };
+          })
         };
       }, {});
       return {

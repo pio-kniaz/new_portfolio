@@ -13,10 +13,8 @@ class FormBuilder extends React.Component {
       input,
       label,
       placeholder,
-      defaultValue,
       meta: { touched, error, warning }
     } = this.props;
-    console.log(defaultValue);
     switch (type) {
       case "textarea":
         return (
