@@ -25,7 +25,11 @@ export const reducer = (state = initialState, action) => {
     case GET_ABOUT_DATA_FULFILLED:
       const reducedToObjData = action.payload.reduce((acc, item) => {
         return {
-          ...item
+          ...item.dataResponse.reduce((acc, elem) => {
+            return {
+              ...elem
+            };
+          })
         };
       }, {});
       return {

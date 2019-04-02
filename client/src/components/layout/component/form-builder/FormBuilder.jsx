@@ -2,6 +2,12 @@ import React from "react";
 import { FormGroup, Input, Label } from "reactstrap";
 
 class FormBuilder extends React.Component {
+  saveValues = e => {
+    const { input } = this.props;
+    console.log(e.target.value,'e.target.value');
+    console.log(input,'input');
+    input.onChange(e.target.value);
+  };
   renderFields = type => {
     const {
       input,
@@ -29,10 +35,13 @@ class FormBuilder extends React.Component {
           <FormGroup>
             <Label>{label}</Label>
             <Input
-              className={touched && error ? 'Input Input--invalid' : 'Input'}
+              className={touched && error ? "Input Input--invalid" : "Input"}
               type="text"
               placeholder={placeholder}
               {...input}
+              // onChange={(e) => {
+              //     this.saveValues(e);
+              //   }}
             />
           </FormGroup>
         );

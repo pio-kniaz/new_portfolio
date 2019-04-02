@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 const Navigation = props => {
-  console.log(props, "from navigation");
   const {
     logOutUser,
     currentUser: { userData }

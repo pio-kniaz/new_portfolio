@@ -3,7 +3,17 @@ import api from "api/api";
 import jwt_decode from "jwt-decode";
 import { setAuthToken } from "utils/authorization/setAuthToken";
 
-import { LOG_IN_USER, LOG_IN_USER_REJECTED , LOG_OUT , CLEAR_LOGGED_USER } from "redux/actionTypes";
+import {
+  LOG_IN_USER,
+  LOG_IN_USER_REJECTED,
+  CLEAR_LOGGED_USER,
+  GET_ABOUT_CMS_DATA_PENDING,
+  GET_ABOUT_CMS_DATA_REJECTED,
+  GET_ABOUT_CMS_DATA_FULFILLED,
+  UPDATE_ABOUT_CMS_DATA_PENDING,
+  UPDATE_ABOUT_CMS_DATA_REJECTED,
+  UPDATE_ABOUT_CMS_DATA_FULFILLED,
+} from "redux/actionTypes";
 
 export const logIn = user => async dispatch => {
   const { data } = await axios.post(`${api._baseURL}/users/login`, user);
@@ -39,11 +49,51 @@ export const logOutUser = () => dispatch => {
   // Remove auth header for future requests
   setAuthToken(false);
   dispatch(clearLoggedUser());
-}
+};
 
 export const clearLoggedUser = () => {
   return {
     type: CLEAR_LOGGED_USER,
-    payload: {},
+    payload: {}
+  };
+};
+
+// CMS
+export const getAboutCMS = () => async dispatch => {
+  const response = await axios.get(`${api._baseURL}/about`);
+  dispatch({
+    type: GET_ABOUT_CMS_DATA_PENDING,
+    payload: true,
+  });
+  try {
+    dispatch({
+      type: GET_ABOUT_CMS_DATA_FULFILLED,
+      payload: response.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: GET_ABOUT_CMS_DATA_REJECTED,
+      payload: e.response,
+    });
+  }
+};
+
+export const updateAboutCMS = (obj,id) => async dispatch => {
+  console.log(obj,'obj');
+  const { data } = await axios.put(`${api._baseURL}/about/${id}`,obj);
+  dispatch({
+    type: UPDATE_ABOUT_CMS_DATA_PENDING,
+    payload: true,
+  })
+  try {
+    dispatch({
+      type: UPDATE_ABOUT_CMS_DATA_FULFILLED,
+      payload: data,
+    })
+  } catch (e) {
+    dispatch({
+      type: UPDATE_ABOUT_CMS_DATA_REJECTED,
+      payload:e
+    })
   }
 }
