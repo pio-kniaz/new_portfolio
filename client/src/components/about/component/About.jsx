@@ -7,14 +7,15 @@ class About extends React.Component {
   }
   renderPlContent = () => {
     const {
-      about: { aboutData, aboutFailure }
+      about: { aboutData }
     } = this.props;
-    const content = aboutData['pl'].reduce((acc,item)=>{
+    const content = aboutData["pl"].reduce((acc, item) => {
       acc[item.field] = item.text;
       return acc;
-    },{});
+    }, {});
+    console.log(content,'content');
     return (
-      <div className="jumbotron About__content">
+      <div className="jumbotron About__content content-wrapper">
         <h1 className="display-3 About__title">
           {`Hey I'm`} <span className="About__syntax">{`<`}</span>Piotr
           <span className="About__syntax">{`>`}</span>
@@ -35,18 +36,18 @@ class About extends React.Component {
           </Link>
         </p>
       </div>
-    )
+    );
   };
   renderEngContent = () => {
     const {
-      about: { aboutData, aboutFailure }
+      about: { aboutData }
     } = this.props;
-    const content = aboutData['eng'].reduce((acc,item)=>{
+    const content = aboutData["eng"].reduce((acc, item) => {
       acc[item.field] = item.text;
       return acc;
-    },{});
+    }, {});
     return (
-      <div className="jumbotron About__content">
+      <div className="jumbotron About__content content-wrapper">
         <h1 className="display-3 About__title">
           {`Hey I'm`} <span className="About__syntax">{`<`}</span>Piotr
           <span className="About__syntax">{`>`}</span>
@@ -67,19 +68,26 @@ class About extends React.Component {
           </Link>
         </p>
       </div>
-    )
+    );
   };
   render() {
     const {
-      about: { aboutData, aboutFailure }
+      about: { aboutData, aboutFailure },
+      currentLanguage
     } = this.props;
+    console.log(currentLanguage, "currentLanguage");
     return (
       <section className="About">
-        {aboutData ? <>
-          {this.renderPlContent()}
-          {/* {this.renderEngContent()} */}
-        </>
-        : <p>Loading...</p>
+        {aboutData && !aboutFailure ? (
+          <div>
+            {currentLanguage === "PL" ? (
+              <>{this.renderPlContent()}</>
+            ) : (
+              <>{this.renderEngContent()}</>
+            )}
+          </div>
+        )
+        : <p>Loading....</p>
       }
       </section>
     );

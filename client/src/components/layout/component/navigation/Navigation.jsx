@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import LanguageContainer from 'components/language/container/LanguageContainer';
+
 const Navigation = props => {
   const {
     logOutUser,
@@ -39,6 +41,9 @@ const Navigation = props => {
           >
             Contact
           </NavLink>
+        </li>
+        <li className="Navigation__li">
+          <LanguageContainer/>
         </li>
         {userData && (
           <li className="Navigation__li">

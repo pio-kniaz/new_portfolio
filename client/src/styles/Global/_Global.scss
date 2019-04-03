@@ -1,8 +1,15 @@
-html, body {
+html,
+body {
   background-color: black;
 }
 section {
   margin-top: 130px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.content-wrapper {
+  border: 2px solid #fff;
+  background-color: transparent;
+  border-radius: 555px 25px 15px 25px/25px 5px 35px 555px;
 }
