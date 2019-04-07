@@ -17,13 +17,10 @@ class AboutCMS extends React.Component {
     }, {});
     //
     // eng initial values
-    const engInitialValue = aboutCMSData.eng.reduce(
-      (acc, item) => {
-        acc[`${item.field}`] = item.text;
-        return acc;
-      },
-      {}
-    );
+    const engInitialValue = aboutCMSData.eng.reduce((acc, item) => {
+      acc[`${item.field}`] = item.text;
+      return acc;
+    }, {});
     //
     const mergerdInitialValues = { ...plInitialValue, ...engInitialValue };
     initialize(mergerdInitialValues);
@@ -37,10 +34,10 @@ class AboutCMS extends React.Component {
       }
     } = this.props;
 
-    const data = {...values }
+    const data = { ...values };
     updateAboutCMS(data, aboutCMSDataId)
-    .then(()=>successToast('Fields have been updated'))
-    .catch(()=>failureToast('Error'))
+      .then(() => successToast("Fields have been updated"))
+      .catch(() => failureToast("Error"));
   };
   renderFieldsPL = () => {
     const {
@@ -82,22 +79,26 @@ class AboutCMS extends React.Component {
     } = this.props;
     return (
       <Container className="About-CMS">
-        {aboutCMSData && (
-          <Form onSubmit={handleSubmit(this.submitValue)}>
-            <h3 className="About-CMS__title">About Section CMS</h3>
-            <Row className="About-CMS__row">
-              <Col md="6" xs="12" className="About-CMS__pl">
-                {this.renderFieldsPL()}
-              </Col>
-              <Col md="6" xs="12" className="About-CMS__cro">
-                {this.renderFieldsENG()}
-              </Col>
-              <Col xs="12">
-                <Button outline color="success">Submit</Button>
-              </Col>
-            </Row>
-          </Form>
-        )}
+        <h3 className="About-CMS__title">About Section CMS</h3>
+        <div className="AdminPanel__outline">
+          {aboutCMSData && (
+            <Form onSubmit={handleSubmit(this.submitValue)}>
+              <Row>
+                <Col md="18" xs="36" className="About-CMS__pl">
+                  {this.renderFieldsPL()}
+                </Col>
+                <Col md="18" xs="36" className="About-CMS__cro">
+                  {this.renderFieldsENG()}
+                </Col>
+                <Col xs="36">
+                  <Button outline color="success">
+                    Submit
+                  </Button>
+                </Col>
+              </Row>
+            </Form>
+          )}
+        </div>
       </Container>
     );
   }

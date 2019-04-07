@@ -3,11 +3,16 @@
 }
 
 .About-CMS {
-  &__row {
-    padding: 15px;
-    border: 2px solid #fff;
-  }
   &__title {
     margin-bottom: 25px;
+  }
+}
+.ProjectCMS {
+  &__add-new {
+    margin: 25px auto;
+  }
+  &__text-inputs {
+    max-width: 500px;
+    margin: 25px auto;
   }
 }

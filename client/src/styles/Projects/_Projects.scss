@@ -1,0 +1,23 @@
+.Projects {
+  width: 100%;
+  &__wrapper {
+    justify-content: space-around;
+    margin: 35px auto;
+  }
+  &__box {
+    background-color: $yellow;
+    min-height: 250px;
+    position: relative;
+    &:hover .Projects__tech {
+      display: flex;
+    }
+  }
+  &__tech {
+    justify-content: space-around;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+  }
+}

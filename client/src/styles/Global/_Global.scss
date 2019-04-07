@@ -1,11 +1,16 @@
 html,
 body {
-  background-color: black;
+  background-color: #222831;
 }
 section {
   margin-top: 130px;
   margin-left: auto;
   margin-right: auto;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  color: #fff;
+  text-align: center;
 }
 
 .content-wrapper {

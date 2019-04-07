@@ -1,6 +1,7 @@
 import React from "react";
 import User from "components/admin-panel/component/User/User";
 import AboutCMSCOntainer from "components/admin-panel/container/AboutCMSCOntainer";
+import ProjectCMSContainer from "components/admin-panel/container/ProjectCMSContainer";
 import jwt_decode from "jwt-decode";
 import { setAuthToken } from "utils/authorization/setAuthToken";
 
@@ -11,11 +12,7 @@ class AdminPanel extends React.Component {
   };
 
   componentDidMount() {
-    const {
-      setCurrentUser,
-      logOutUser,
-      getAboutCMS
-    } = this.props;
+    const { setCurrentUser, logOutUser, getAboutCMS } = this.props;
     if (localStorage.jwtToken) {
       const token = localStorage.jwtToken;
       setAuthToken(token);
@@ -52,7 +49,12 @@ class AdminPanel extends React.Component {
             logIn={logIn}
           />
         ) : (
-          <div>{cmsDataCompleted && <AboutCMSCOntainer />}</div>
+          <>
+            <div>{cmsDataCompleted && <AboutCMSCOntainer />}</div>
+            <div>
+              <ProjectCMSContainer />
+            </div>
+          </>
         )}
       </section>
     );

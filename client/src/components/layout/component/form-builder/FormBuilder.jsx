@@ -4,8 +4,6 @@ import { FormGroup, Input, Label } from "reactstrap";
 class FormBuilder extends React.Component {
   saveValues = e => {
     const { input } = this.props;
-    console.log(e.target.value,'e.target.value');
-    console.log(input,'input');
     input.onChange(e.target.value);
   };
   renderFields = type => {
@@ -39,9 +37,18 @@ class FormBuilder extends React.Component {
               type="text"
               placeholder={placeholder}
               {...input}
-              // onChange={(e) => {
-              //     this.saveValues(e);
-              //   }}
+            />
+          </FormGroup>
+        );
+      case "checkbox":
+        return (
+          <FormGroup className="d-flex justify-content-space">
+            <Label>{label}</Label>
+            <Input
+              className={touched && error ? "Input Input--invalid" : "Input"}
+              type="checkbox"
+              placeholder={placeholder}
+              {...input}
             />
           </FormGroup>
         );
@@ -51,7 +58,7 @@ class FormBuilder extends React.Component {
   };
   render() {
     const { type } = this.props;
-    return <div>{this.renderFields(type)}</div>;
+    return <>{this.renderFields(type)}</>;
   }
 }
 export default FormBuilder;

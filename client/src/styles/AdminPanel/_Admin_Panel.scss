@@ -5,4 +5,9 @@
   color: #fff;
   text-align: center;
   min-width: 90%;
+  &__outline {
+    padding: 25px 25px;
+    margin: 50px auto;
+    border: 2px solid #fff;
+  }
 }

@@ -7,6 +7,8 @@ const passport = require("passport");
 const about = require("./routes/api/about");
 // User
 const users = require("./routes/api/users");
+// Project
+const project = require("./routes/api/projects");
 
 // Body Parserr Middleware
 app.use(cors());
@@ -17,12 +19,13 @@ app.use(passport.initialize());
 // Passport config
 require("./config/passport")(passport);
 // Routes
-// about
-app.use("/api/",about);
+
+// About
+app.use("/api/", about);
 // User
 app.use("/api/users", users);
-
-
+// Project
+app.use("/api/", project);
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => console.log(`server is running on port: ${PORT}`));

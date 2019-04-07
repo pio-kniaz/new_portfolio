@@ -13,6 +13,12 @@ import {
   UPDATE_ABOUT_CMS_DATA_PENDING,
   UPDATE_ABOUT_CMS_DATA_REJECTED,
   UPDATE_ABOUT_CMS_DATA_FULFILLED,
+  GET_PROJECTS_CMS_DATA_PENDING,
+  GET_PROJECTS_CMS_DATA_REJECTED,
+  GET_PROJECTS_CMS_DATA_FULFILLED,
+  ADD_PROJECT_CMS_DATA_PENDING,
+  ADD_PROJECT_CMS_DATA_REJECTED,
+  ADD_PROJECT_CMS_DATA_FULFILLED,
 } from "redux/actionTypes";
 
 export const logIn = user => async dispatch => {
@@ -60,40 +66,78 @@ export const clearLoggedUser = () => {
 
 // CMS
 export const getAboutCMS = () => async dispatch => {
-  const response = await axios.get(`${api._baseURL}/about`);
   dispatch({
     type: GET_ABOUT_CMS_DATA_PENDING,
     payload: true,
   });
   try {
+    const { data } = await axios.get(`${api._baseURL}/about`);
     dispatch({
       type: GET_ABOUT_CMS_DATA_FULFILLED,
-      payload: response.data,
+      payload: data,
     });
   } catch (e) {
     dispatch({
       type: GET_ABOUT_CMS_DATA_REJECTED,
-      payload: e.response,
+      payload: e.response
     });
   }
 };
 
 export const updateAboutCMS = (obj,id) => async dispatch => {
-  console.log(obj,'obj');
-  const { data } = await axios.put(`${api._baseURL}/about/${id}`,obj);
   dispatch({
     type: UPDATE_ABOUT_CMS_DATA_PENDING,
     payload: true,
-  })
+  });
   try {
+    const { data } = await axios.put(`${api._baseURL}/about/${id}`,obj);
     dispatch({
       type: UPDATE_ABOUT_CMS_DATA_FULFILLED,
       payload: data,
-    })
+    });
   } catch (e) {
     dispatch({
       type: UPDATE_ABOUT_CMS_DATA_REJECTED,
       payload:e
-    })
+    });
+  }
+}
+// Projects
+export const getProjectsCMS = () => async dispatch => {
+  dispatch({
+    type:GET_PROJECTS_CMS_DATA_PENDING,
+    payload: true,
+  })
+  try {
+    const { data } = await axios.get(`${api._baseURL}/project`);
+    dispatch({
+      type: GET_PROJECTS_CMS_DATA_FULFILLED,
+      payload: data,
+    });
+  } catch (e) {
+    dispatch({
+      type: GET_PROJECTS_CMS_DATA_REJECTED,
+      payload: e.response,
+    });
+  }
+}
+// Add new Project
+
+export const addNewProject = (newProject) => async dispatch => {
+  dispatch({
+    type: ADD_PROJECT_CMS_DATA_PENDING,
+    payload: true,
+  })
+  try {
+    const { data } = await axios.post(`${api._baseURL}/project`, newProject)
+    dispatch({
+      type: ADD_PROJECT_CMS_DATA_FULFILLED,
+      payload: data,
+    });
+  } catch (e) {
+    dispatch({
+      type: ADD_PROJECT_CMS_DATA_REJECTED,
+      payload: e.response,
+    });
   }
 }
