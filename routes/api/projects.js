@@ -23,11 +23,11 @@ router.get("/project", (req, res) => {
     .then(projects => {
       return res.json({ confirmation: "success", data: projects });
     })
-    .catch((err) => {
+    .catch(err => {
       return res.status(400).send({
-        confirmation:" faile",
+        confirmation: " failed",
         message: err.message
-      })
+      });
     });
 });
 
@@ -37,11 +37,28 @@ router.get("/project/:id", (req, res) => {
     .then(projects => {
       return res.json({ confirmation: "success", data: projects });
     })
-    .catch((err) => {
+    .catch(err => {
       res.status(400).send({
-        confirmation:" faile",
+        confirmation: " failed",
         message: err.message
+      });
+    });
+});
+
+router.put("/project/:id", (req, res) => {
+  const id = req.params.id;
+  Project.findOneAndUpdate(id)
+    .then(project => {
+      project.hidden = !project.hidden;
+      project.save((error)=> {
+        if (error) {
+          res.status(400).send(error);
+        }
+        res.json({ confirmation: "success", data: project });
       })
+    })
+    .catch(() => {
+      res.status(400).send({ confirmation: "failed", message: err.message });
     });
 });
 

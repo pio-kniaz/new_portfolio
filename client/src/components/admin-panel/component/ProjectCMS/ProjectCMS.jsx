@@ -9,7 +9,6 @@ class ProjectCMS extends React.Component {
     getProjectsCMS();
   }
   render() {
-    let groupSize = 3;
     console.log(this.props, "from project cms");
     const {
       projectsCMS: {
@@ -24,23 +23,12 @@ class ProjectCMS extends React.Component {
         <h2 className="Global__title">Projects CMS</h2>
         <div className="AdminPanel__outline">
           <ProjectNewCMS addNewProjectAction={addNewProject} />
-          {projectsCMSData &&
-            projectsCMSData
-              .map(elem => {
-                return <Project {...elem} />;
-              })
-              .reduce((acc, element, index) => {
-                index % groupSize === 0 && acc.push([]);
-                acc[acc.length - 1].push(element);
-                return acc;
-              }, [])
-              .map((rowContent, index) => {
-                return (
-                  <Row className="Projects__wrapper" key={index}>
-                    {rowContent}
-                  </Row>
-                );
+          <Row className="Projects__row">
+            {projectsCMSData &&
+              projectsCMSData.map(elem => {
+                return <Project editable key={elem._id} {...elem} />;
               })}
+          </Row>
         </div>
       </Container>
     );

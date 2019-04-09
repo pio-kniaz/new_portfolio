@@ -10,10 +10,12 @@ import {
 import { Col } from "reactstrap";
 
 const Project = props => {
-  const { ...elem } = props;
+  const { editable, ...elem } = props;
+  console.log(props,'props');
   return (
-    <Col key={elem._id} lg="11" md="11" sm="36" className="Projects__box">
+    <Col key={elem._id} lg="12" md="12" sm="36" className="Projects__box">
       <h3>{elem.name}</h3>
+      {editable && <div>{elem.hidden ?<span>Hide</span> : <span>Show</span> }</div>}
       <div className="Projects__tech">
         {elem.technologies.map((obj , i)=> {
           return (

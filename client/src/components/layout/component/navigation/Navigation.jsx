@@ -15,7 +15,7 @@ const Navigation = props => {
         <li className="Navigation__li">
           <NavLink
             activeClassName="Navigation__a--active"
-            className="Navigation__a btn-outline-primary btn"
+            className="Navigation__a btn"
             exact
             to="/"
           >
@@ -25,7 +25,7 @@ const Navigation = props => {
         <li className="Navigation__li">
           <NavLink
             activeClassName="Navigation__a--active"
-            className="Navigation__a btn-outline-primary btn"
+            className="Navigation__a btn"
             exact
             to="/projects"
           >
@@ -35,7 +35,7 @@ const Navigation = props => {
         <li className="Navigation__li">
           <NavLink
             activeClassName="Navigation__a--active"
-            className="Navigation__a btn-outline-primary btn"
+            className="Navigation__a btn"
             exact
             to="/contact"
           >

@@ -9,29 +9,19 @@ class ProjectList extends React.Component {
   }
 
   render() {
-    let groupSize = 3;
     const { projects } = this.props;
     return (
       <section className="Projects">
         <Container>
           <h2 className="Global__title">Projects</h2>
-          {projects &&
-            projects
-              .map(elem => {
-                return <Project {...elem} />;
-              })
-              .reduce((acc, element, index) => {
-                index % groupSize === 0 && acc.push([]);
-                acc[acc.length - 1].push(element);
-                return acc;
-              }, [])
-              .map((rowContent, index) => {
-                return (
-                  <Row className="Projects__wrapper" key={index}>
-                    {rowContent}
-                  </Row>
-                );
-              })}
+          <Row className="Projects__row">
+            {projects &&
+              projects
+                .map(elem => {
+                  return <>{!elem.hidden && <Project key={elem._id} {...elem} />}</>
+                })
+              }
+          </Row>
         </Container>
       </section>
     );

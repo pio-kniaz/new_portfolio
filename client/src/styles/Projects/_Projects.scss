@@ -1,5 +1,9 @@
 .Projects {
   width: 100%;
+  &__row {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
   &__wrapper {
     justify-content: space-around;
     margin: 35px auto;
@@ -8,6 +12,7 @@
     background-color: $yellow;
     min-height: 250px;
     position: relative;
+    transform: scale(0.9);
     &:hover .Projects__tech {
       display: flex;
     }
