@@ -4,5 +4,5 @@ export default class Api {
    * @private
    * @type {string}
    */
-   static _baseURL = "http://localhost:3001/api"
+   static _baseURL = 'http://localhost:3001/api'
 }

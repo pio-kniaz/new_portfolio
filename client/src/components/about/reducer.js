@@ -1,15 +1,15 @@
 import {
   GET_ABOUT_DATA_PENDING,
   GET_ABOUT_DATA_FULFILLED,
-  GET_ABOUT_DATA_REJECTED
-} from "redux/actionTypes";
+  GET_ABOUT_DATA_REJECTED,
+} from 'redux/actionTypes';
 
 const initialState = {
   about: {
     aboutData: null,
     aboutRequest: false,
-    aboutFailure: false
-  }
+    aboutFailure: false,
+  },
 };
 
 export const reducer = (state = initialState, action) => {
@@ -19,39 +19,35 @@ export const reducer = (state = initialState, action) => {
         ...state,
         about: {
           ...state.about,
-          aboutRequest: true
-        }
+          aboutRequest: true,
+        },
       };
     case GET_ABOUT_DATA_FULFILLED:
-      const reducedToObjData = action.payload.reduce((acc, item) => {
-        return {
-          ...item.dataResponse.reduce((acc, elem) => {
-            return {
-              ...elem
-            };
-          })
-        };
-      }, {});
+      const reducedToObjData = action.payload.reduce((acc, item) => ({
+        ...item.dataResponse.reduce((acc, elem) => ({
+          ...elem,
+        })),
+      }), {});
       return {
         ...state,
         about: {
           ...state.about,
           aboutData: reducedToObjData,
           aboutRequest: false,
-          aboutFailure: false
-        }
+          aboutFailure: false,
+        },
       };
-      case GET_ABOUT_DATA_REJECTED:
+    case GET_ABOUT_DATA_REJECTED:
       return {
         ...state,
         about: {
           ...state.about,
           aboutFailure: true,
-        }
-      }
+        },
+      };
     default:
       return {
-        ...state
+        ...state,
       };
   }
 };

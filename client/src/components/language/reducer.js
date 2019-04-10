@@ -1,7 +1,8 @@
 import { SWICH_TO_ENG, SWICH_TO_PL } from 'redux/actionTypes';
+
 const initialState = {
-  language: 'ENG'
-}
+  language: 'ENG',
+};
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -9,12 +10,12 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         language: action.payload,
-      }
+      };
     case SWICH_TO_PL:
       return {
         ...state,
         language: action.payload,
-      }
+      };
     default: return state;
   }
-}
+};

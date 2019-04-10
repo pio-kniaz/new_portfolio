@@ -1,11 +1,9 @@
 import React from 'react';
-import MainLayout from "components/layout/component/main/MainLayout";
+import MainLayout from 'components/layout/component/main/MainLayout';
 
-const ContactPage = () => {
-  return (
-    <MainLayout>
+const ContactPage = () => (
+  <MainLayout>
       ContactPage
-    </MainLayout>
-  )
-}
+  </MainLayout>
+);
 export default ContactPage;

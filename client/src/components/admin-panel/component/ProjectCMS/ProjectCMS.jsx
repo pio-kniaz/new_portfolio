@@ -1,22 +1,30 @@
-import React from "react";
-import Project from "components/projects/component/Project";
-import { Row, Container } from "reactstrap";
-import ProjectNewCMS from "components/admin-panel/component/ProjectCMS/ProjectNewCMS";
+import React from 'react';
+import Project from 'components/projects/component/Project';
+import { Row, Container } from 'reactstrap';
+import ProjectNewCMS from 'components/admin-panel/component/ProjectCMS/ProjectNewCMS';
+import PropTypes from 'prop-types';
 
 class ProjectCMS extends React.Component {
+  static propTypes = {
+    getProjectsCMS: PropTypes.func.isRequired,
+    addNewProject: PropTypes.func.isRequired,
+    projectsCMS: PropTypes.object.isRequired,
+  }
+
   componentDidMount() {
     const { getProjectsCMS } = this.props;
     getProjectsCMS();
   }
+
   render() {
-    console.log(this.props, "from project cms");
+    console.log(this.props, 'from project cms');
     const {
       projectsCMS: {
         projectsCMSData,
         projectsCMSReqest,
-        projectsCMSReqestFailure
+        projectsCMSReqestFailure,
       },
-      addNewProject
+      addNewProject,
     } = this.props;
     return (
       <Container>
@@ -24,10 +32,8 @@ class ProjectCMS extends React.Component {
         <div className="AdminPanel__outline">
           <ProjectNewCMS addNewProjectAction={addNewProject} />
           <Row className="Projects__row">
-            {projectsCMSData &&
-              projectsCMSData.map(elem => {
-                return <Project editable key={elem._id} {...elem} />;
-              })}
+            {projectsCMSData
+              && projectsCMSData.map(elem => <Project editable key={elem._id} {...elem} />)}
           </Row>
         </div>
       </Container>

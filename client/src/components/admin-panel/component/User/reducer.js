@@ -1,10 +1,10 @@
-import { LOG_IN_USER, LOG_OUT } from "redux/actionTypes";
+import { LOG_IN_USER, LOG_OUT } from 'redux/actionTypes';
 
 const initialState = {
   user: {
     userData: null,
-    isLogged: false
-  }
+    isLogged: false,
+  },
 };
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -14,13 +14,13 @@ export const reducer = (state = initialState, action) => {
         user: {
           ...state.user,
           userData: action.payload,
-          isLogged: true
-        }
+          isLogged: true,
+        },
       };
     case LOG_OUT:
       return {
         ...state,
-        user: action.payload
+        user: action.payload,
       };
     default:
       return state;

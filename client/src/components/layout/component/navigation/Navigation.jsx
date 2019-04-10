@@ -1,13 +1,18 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import LanguageContainer from 'components/language/container/LanguageContainer';
+import PropTypes from 'prop-types';
 
-const Navigation = props => {
+const Navigation = (props) => {
+  Navigation.propTypes = {
+    logOutUser: PropTypes.func.isRequired,
+    currentUser: PropTypes.object.isRequired,
+  };
   const {
     logOutUser,
-    currentUser: { userData }
+    currentUser: { userData },
   } = props;
   return (
     <nav className="Navigation">
@@ -43,7 +48,7 @@ const Navigation = props => {
           </NavLink>
         </li>
         <li className="Navigation__li">
-          <LanguageContainer/>
+          <LanguageContainer />
         </li>
         {userData && (
           <li className="Navigation__li">

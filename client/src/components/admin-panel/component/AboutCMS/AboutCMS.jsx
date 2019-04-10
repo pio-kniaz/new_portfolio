@@ -1,14 +1,24 @@
-import React from "react";
-import { Container, Button, Form, Row, Col } from "reactstrap";
-import { Field, reduxForm } from "redux-form";
-import FormBuilder from "components/layout/component/form-builder/FormBuilder";
-import { successToast, failureToast } from "utils/toastify/toastify";
+import React from 'react';
+import {
+  Container, Button, Form, Row, Col,
+} from 'reactstrap';
+import { Field, reduxForm } from 'redux-form';
+import FormBuilder from 'components/layout/component/form-builder/FormBuilder';
+import { successToast, failureToast } from 'utils/toastify/toastify';
+import PropTypes from 'prop-types';
 
 class AboutCMS extends React.Component {
+  static propTypes = {
+    aboutCMS: PropTypes.object.isRequired,
+    initialize: PropTypes.func.isRequired,
+    updateAboutCMS: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+  }
+
   componentDidMount() {
     const {
       aboutCMS: { aboutCMSData },
-      initialize
+      initialize,
     } = this.props;
     // pl initial values
     const plInitialValue = aboutCMSData.pl.reduce((acc, item) => {
@@ -26,56 +36,54 @@ class AboutCMS extends React.Component {
     initialize(mergerdInitialValues);
   }
 
-  submitValue = values => {
+  submitValue = (values) => {
     const {
       updateAboutCMS,
       aboutCMS: {
-        aboutCMSData: { aboutCMSDataId }
-      }
+        aboutCMSData: { aboutCMSDataId },
+      },
     } = this.props;
 
     const data = { ...values };
     updateAboutCMS(data, aboutCMSDataId)
-      .then(() => successToast("Fields have been updated"))
-      .catch(() => failureToast("Error"));
+      .then(() => successToast('Fields have been updated'))
+      .catch(() => failureToast('Error'));
   };
+
   renderFieldsPL = () => {
     const {
-      aboutCMS: { aboutCMSData }
+      aboutCMS: { aboutCMSData },
     } = this.props;
-    return aboutCMSData.pl.map(elem => {
-      return (
-        <Field
-          key={elem._id}
-          label={elem.label}
-          type="textarea"
-          name={`${elem.field}`}
-          component={FormBuilder}
-        />
-      );
-    });
+    return aboutCMSData.pl.map(elem => (
+      <Field
+        key={elem._id}
+        label={elem.label}
+        type="textarea"
+        name={`${elem.field}`}
+        component={FormBuilder}
+      />
+    ));
   };
+
   renderFieldsENG = () => {
     const {
-      aboutCMS: { aboutCMSData }
+      aboutCMS: { aboutCMSData },
     } = this.props;
-    return aboutCMSData.eng.map(elem => {
-      return (
-        <Field
-          key={elem._id}
-          label={elem.label}
-          type="textarea"
-          name={`${elem.field}`}
-          component={FormBuilder}
-        />
-      );
-    });
+    return aboutCMSData.eng.map(elem => (
+      <Field
+        key={elem._id}
+        label={elem.label}
+        type="textarea"
+        name={`${elem.field}`}
+        component={FormBuilder}
+      />
+    ));
   };
 
   render() {
     const {
       aboutCMS: { aboutCMSData },
-      handleSubmit
+      handleSubmit,
     } = this.props;
     return (
       <Container className="About-CMS">
@@ -104,5 +112,5 @@ class AboutCMS extends React.Component {
   }
 }
 export default reduxForm({
-  form: "about-cms"
+  form: 'about-cms',
 })(AboutCMS);

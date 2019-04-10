@@ -1,68 +1,71 @@
-import React from "react";
-import { Field, reduxForm } from "redux-form";
-import { Row, Container, Col, Form, Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import FormBuilder from "components/layout/component/form-builder/FormBuilder";
-import { successToast, failureToast } from "utils/toastify/toastify";
+import React from 'react';
+import { Field, reduxForm } from 'redux-form';
+import {
+  Row, Col, Form, Button, Modal, ModalHeader, ModalBody,
+} from 'reactstrap';
+import FormBuilder from 'components/layout/component/form-builder/FormBuilder';
+import { successToast, failureToast } from 'utils/toastify/toastify';
+import PropTypes from 'prop-types';
 
 const availableTechnologies = [
-  "react",
-  "js",
-  "php",
-  "css",
-  "node",
-  "express",
-  "mongodb",
-  "redux"
+  'react',
+  'js',
+  'php',
+  'css',
+  'node',
+  'express',
+  'mongodb',
+  'redux',
 ];
 class ProjectNewCMS extends React.Component {
   state = {
     addNewProjectModal: false,
   }
 
+  static propTypes = {
+    addNewProjectAction: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+  }
+
   toggleModalAddNewProject = () => {
-    this.setState((prevState)=>({
+    this.setState(prevState => ({
       addNewProjectModal: !prevState.addNewProjectModal,
     }));
   }
 
-  renderCheckboxes = () => {
-    return (
-      <Row className="ProjectCMS__add-new">
-        <Col xs="36">
-          <h3 className="mb-4">Technologies</h3>
+  renderCheckboxes = () => (
+    <Row className="ProjectCMS__add-new">
+      <Col xs="36">
+        <h3 className="mb-4">Technologies</h3>
+      </Col>
+      {availableTechnologies.map(elem => (
+        <Col key={elem} xs="12">
+          <Field
+            label={elem}
+            type="checkbox"
+            name={`technologies_${elem}`}
+            component={FormBuilder}
+          />
         </Col>
-        {availableTechnologies.map(elem => {
-          return (
-            <Col key={elem} xs="12">
-              <Field
-                label={elem}
-                type="checkbox"
-                name={`technologies_${elem}`}
-                component={FormBuilder}
-              />
-            </Col>
-          );
-        })}
-      </Row>
-    );
-  };
-  addNewProject = values => {
+      ))}
+    </Row>
+  );
+
+  addNewProject = (values) => {
     const { addNewProjectAction } = this.props;
     if (values) {
-      const filterTechnologies = Object.keys(values).filter(key => {
-        return key.includes("technologies");
-      });
-      const technologies = filterTechnologies.map((elem)=>elem.split("_")[1]);
+      const filterTechnologies = Object.keys(values).filter(key => key.includes('technologies'));
+      const technologies = filterTechnologies.map(elem => elem.split('_')[1]);
       const newProjectData = {
         name: values.projectName,
         url: values.url,
         technologies,
-      }
-      addNewProjectAction(newProjectData).then(()=>{
-        successToast('New Project has been added')
+      };
+      addNewProjectAction(newProjectData).then(() => {
+        successToast('New Project has been added');
         this.toggleModalAddNewProject();
       })
-      .catch(()=>failureToast('Unable to add new project'))
+        .catch(() => failureToast('Unable to add new project'));
     }
   };
 
@@ -97,7 +100,7 @@ class ProjectNewCMS extends React.Component {
           </Col>
         </Row>
       </Form>
-    )
+    );
   };
 
   render() {
@@ -122,5 +125,5 @@ class ProjectNewCMS extends React.Component {
   }
 }
 export default reduxForm({
-  form: "addNewProject"
+  form: 'addNewProject',
 })(ProjectNewCMS);

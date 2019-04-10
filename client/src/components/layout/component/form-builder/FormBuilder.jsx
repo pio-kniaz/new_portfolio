@@ -1,51 +1,67 @@
-import React from "react";
-import { FormGroup, Input, Label } from "reactstrap";
+import React from 'react';
+import { FormGroup, Input, Label } from 'reactstrap';
+import PropTypes from 'prop-types';
 
 class FormBuilder extends React.Component {
-  saveValues = e => {
+  static propTypes = {
+    input: PropTypes.object.isRequired,
+    meta: PropTypes.object.isRequired,
+    label: PropTypes.string,
+    placeholder: PropTypes.string,
+    type: PropTypes.string,
+  }
+
+  static defaultProps = {
+    label: null,
+    placeholder: null,
+    type: null,
+  }
+
+  saveValues = (e) => {
     const { input } = this.props;
     input.onChange(e.target.value);
   };
-  renderFields = type => {
+
+  renderFields = (type) => {
     const {
       input,
       label,
       placeholder,
-      meta: { touched, error, warning }
+      meta: { touched, error, warning },
     } = this.props;
     switch (type) {
-      case "textarea":
+      case 'textarea':
         return (
           <FormGroup>
             <Label>{label}</Label>
             <Input type="textarea" placeholder={placeholder} {...input} />
-            {touched &&
-              ((error && (
+            {touched
+              && ((error && (
                 <span className="CreateNewCheckList__error d-block error">
                   {error}
                 </span>
-              )) ||
-                (warning && <span>{warning}</span>))}
+              ))
+                || (warning && <span>{warning}</span>))}
           </FormGroup>
         );
-      case "text":
+      case 'text':
         return (
           <FormGroup>
             <Label>{label}</Label>
             <Input
-              className={touched && error ? "Input Input--invalid" : "Input"}
+              className={touched && error ? 'Input Input--invalid' : 'Input'}
               type="text"
               placeholder={placeholder}
               {...input}
             />
           </FormGroup>
         );
-      case "checkbox":
+      case 'checkbox':
         return (
           <FormGroup className="d-flex justify-content-space">
             <Label>{label}</Label>
             <Input
-              className={touched && error ? "Input Input--invalid" : "Input"}
+              className={touched && error ? 'Input Input--invalid' : 'Input'}
               type="checkbox"
               placeholder={placeholder}
               {...input}
@@ -56,6 +72,7 @@ class FormBuilder extends React.Component {
         return null;
     }
   };
+
   render() {
     const { type } = this.props;
     return <>{this.renderFields(type)}</>;

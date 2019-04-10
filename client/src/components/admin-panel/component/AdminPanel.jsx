@@ -1,15 +1,24 @@
-import React from "react";
-import User from "components/admin-panel/component/User/User";
-import AboutCMSCOntainer from "components/admin-panel/container/AboutCMSCOntainer";
-import ProjectCMSContainer from "components/admin-panel/container/ProjectCMSContainer";
-import jwt_decode from "jwt-decode";
-import { setAuthToken } from "utils/authorization/setAuthToken";
+import React from 'react';
+import User from 'components/admin-panel/component/User/User';
+import AboutCMSCOntainer from 'components/admin-panel/container/AboutCMSCOntainer';
+import ProjectCMSContainer from 'components/admin-panel/container/ProjectCMSContainer';
+import jwt_decode from 'jwt-decode';
+import { setAuthToken } from 'utils/authorization/setAuthToken';
+import PropTypes from 'prop-types';
 
 class AdminPanel extends React.Component {
   state = {
     modalVisible: true,
-    cmsDataCompleted: false
+    cmsDataCompleted: false,
   };
+
+  static propTypes = {
+    setCurrentUser: PropTypes.func.isRequired,
+    logOutUser: PropTypes.func.isRequired,
+    logIn: PropTypes.func.isRequired,
+    getAboutCMS: PropTypes.func.isRequired,
+    currentUser: PropTypes.object.isRequired,
+  }
 
   componentDidMount() {
     const { setCurrentUser, logOutUser, getAboutCMS } = this.props;
@@ -23,7 +32,7 @@ class AdminPanel extends React.Component {
         // Logout user
         logOutUser();
         // Redirect to home
-        return (window.location.href = "./");
+        return (window.location.href = './');
       }
       getAboutCMS().then(() => this.setState({ cmsDataCompleted: true }));
     }
@@ -31,14 +40,15 @@ class AdminPanel extends React.Component {
 
   toggle = () => {
     this.setState(prevState => ({
-      modalVisible: !prevState.modalVisible
+      modalVisible: !prevState.modalVisible,
     }));
   };
+
   render() {
     const { modalVisible, cmsDataCompleted } = this.state;
     const {
       logIn,
-      currentUser: { userData, isLogged }
+      currentUser: { userData, isLogged },
     } = this.props;
     return (
       <section className="AdminPanel">
