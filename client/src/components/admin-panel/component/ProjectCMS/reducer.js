@@ -5,6 +5,9 @@ import {
   ADD_PROJECT_CMS_DATA_PENDING,
   ADD_PROJECT_CMS_DATA_REJECTED,
   ADD_PROJECT_CMS_DATA_FULFILLED,
+  TOGGLE_PROJECT_CMS_DATA_PENDING,
+  TOGGLE_PROJECT_CMS_DATA_REJECTED,
+  TOGGLE_PROJECT_CMS_DATA_FULFILLED,
 } from 'redux/actionTypes';
 
 const initialState = {
@@ -64,6 +67,28 @@ export const reducer = (state = initialState, action) => {
         },
       };
     case ADD_PROJECT_CMS_DATA_REJECTED:
+      return {
+        ...state,
+        projects: {
+          ...state.projects,
+          projectsCMSReqest: false,
+          projectsCMSReqestFailure: true,
+        },
+      };
+    case TOGGLE_PROJECT_CMS_DATA_FULFILLED:
+      const updatedProjectsCMSData = state.projects.projectsCMSData.map(elem => elem._id === action.payload.data._id
+        ? { ...elem, hidden: !elem.hidden }
+        : elem);
+      return {
+        ...state,
+        projects: {
+          ...state.projects,
+          projectsCMSData: updatedProjectsCMSData,
+          projectsCMSReqest: false,
+          projectsCMSReqestFailure: false,
+        },
+      };
+    case TOGGLE_PROJECT_CMS_DATA_REJECTED:
       return {
         ...state,
         projects: {

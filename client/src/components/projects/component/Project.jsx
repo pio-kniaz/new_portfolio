@@ -1,5 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import {
   faPhp,
   faHtml5,
@@ -7,19 +8,30 @@ import {
   faJs,
   faReact,
 } from '@fortawesome/free-brands-svg-icons';
-import { Col } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 const Project = (props) => {
   Project.propTypes = {
-    editable: PropTypes.bool.isRequired,
+    editable: PropTypes.bool,
+    showOrHideProject: PropTypes.func,
   };
-  const { editable, ...elem } = props;
-  console.log(props, 'props');
+  Project.defaultProps = {
+    editable: false,
+    showOrHideProject: () => null,
+  };
+
+  const { editable, showOrHideProject, ...elem } = props;
   return (
-    <Col key={elem._id} lg="12" md="12" sm="36" className="Projects__box">
+    <>
       <h3>{elem.name}</h3>
-      {editable && <div>{elem.hidden ? <span>Hide</span> : <span>Show</span> }</div>}
+      {editable && (
+        <>
+          {elem.hidden
+            ? <span onClick={() => showOrHideProject(elem._id)} className="Projects__toggle"><FontAwesomeIcon icon={faCheck} /></span>
+            : <span onClick={() => showOrHideProject(elem._id)} className="Projects__toggle"><FontAwesomeIcon icon={faTimes} /></span>
+          }
+        </>
+      )}
       <div className="Projects__tech">
         {elem.technologies.map((obj, i) => (
           <div key={i}>
@@ -32,7 +44,7 @@ const Project = (props) => {
         ))
         }
       </div>
-    </Col>
+    </>
   );
 };
 export default Project;

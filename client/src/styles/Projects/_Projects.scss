@@ -17,6 +17,16 @@
       display: flex;
     }
   }
+  &__toggle {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.3);
+      color: red;
+    }
+  }
   &__tech {
     justify-content: space-around;
     position: absolute;

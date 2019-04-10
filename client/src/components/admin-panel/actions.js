@@ -19,6 +19,9 @@ import {
   ADD_PROJECT_CMS_DATA_PENDING,
   ADD_PROJECT_CMS_DATA_REJECTED,
   ADD_PROJECT_CMS_DATA_FULFILLED,
+  TOGGLE_PROJECT_CMS_DATA_PENDING,
+  TOGGLE_PROJECT_CMS_DATA_REJECTED,
+  TOGGLE_PROJECT_CMS_DATA_FULFILLED,
 } from 'redux/actionTypes';
 
 
@@ -38,7 +41,6 @@ export const logIn = user => async (dispatch) => {
     localStorage.setItem('jwtToken', data.token);
     setAuthToken(data.token);
     const decodedToken = jwt_decode(data.token);
-    console.log({ decodedToken });
     dispatch(setCurrentUser(decodedToken));
   } catch (e) {
     dispatch(logInRejected(e.response));
@@ -132,6 +134,25 @@ export const addNewProject = newProject => async (dispatch) => {
   } catch (e) {
     dispatch({
       type: ADD_PROJECT_CMS_DATA_REJECTED,
+      payload: e.response,
+    });
+  }
+};
+
+export const showOrHideProject = id => async (dispatch) => {
+  dispatch({
+    type: TOGGLE_PROJECT_CMS_DATA_PENDING,
+    payload: true,
+  });
+  try {
+    const { data } = await axios.put(`${api._baseURL}/project/${id}`);
+    dispatch({
+      type: TOGGLE_PROJECT_CMS_DATA_FULFILLED,
+      payload: data,
+    });
+  } catch (e) {
+    dispatch({
+      type: TOGGLE_PROJECT_CMS_DATA_REJECTED,
       payload: e.response,
     });
   }
