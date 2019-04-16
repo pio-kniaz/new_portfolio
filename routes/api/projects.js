@@ -47,7 +47,7 @@ router.get("/project/:id", (req, res) => {
 
 router.put("/project/:id", (req, res) => {
   const id = req.params.id;
-  Project.findOneAndUpdate(id)
+  Project.findByIdAndUpdate(id)
     .then(project => {
       project.hidden = !project.hidden;
       project.save((error)=> {
