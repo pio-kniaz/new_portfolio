@@ -1,27 +1,36 @@
-import React from "react";
+import React from 'react';
 import {
   Button,
   Modal,
   ModalHeader,
   ModalBody,
   FormGroup,
-  Form
-} from "reactstrap";
-import { Field, reduxForm } from "redux-form";
-import FormBuilder from "components/layout/component/form-builder/FormBuilder";
+  Form,
+} from 'reactstrap';
+import { Field, reduxForm } from 'redux-form';
+import FormBuilder from 'components/layout/component/form-builder/FormBuilder';
 import { required } from 'utils/validators/inputsValidator';
+import PropTypes from 'prop-types';
 
 class User extends React.Component {
-  logInUserHandler = values => {
+  static propTypes = {
+    logIn: PropTypes.func.isRequired,
+    toggle: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    modalVisible: PropTypes.bool.isRequired,
+  }
+
+  logInUserHandler = (values) => {
     const { logIn, toggle } = this.props;
-    logIn(values).then(()=> {
+    logIn(values).then(() => {
       console.log('login success');
       toggle();
     }).catch((e) => {
       console.log(e.response.data);
       console.error('ERROR');
-    })
+    });
   };
+
   render() {
     const { modalVisible, toggle, handleSubmit } = this.props;
     return (
@@ -63,5 +72,5 @@ class User extends React.Component {
   }
 }
 export default reduxForm({
-  form: "login"
+  form: 'login',
 })(User);

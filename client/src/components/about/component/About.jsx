@@ -1,24 +1,35 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 class About extends React.Component {
+  static propTypes = {
+    getAboutData: PropTypes.func.isRequired,
+    about: PropTypes.object.isRequired,
+    currentLanguage: PropTypes.string.isRequired,
+  }
+
   componentDidMount() {
     const { getAboutData } = this.props;
     getAboutData();
   }
+
   renderPlContent = () => {
     const {
-      about: { aboutData }
+      about: { aboutData },
     } = this.props;
-    const content = aboutData["pl"].reduce((acc, item) => {
+    const content = aboutData.pl.reduce((acc, item) => {
       acc[item.field] = item.text;
       return acc;
     }, {});
-    console.log(content,'content');
+    console.log(content, 'content');
     return (
       <div className="jumbotron About__content content-wrapper">
         <h1 className="display-3 About__title">
-          {`Hey I'm`} <span className="About__syntax">{`<`}</span>Piotr
-          <span className="About__syntax">{`>`}</span>
+          {'Hey I\'m'}
+          <span className="About__syntax">{'<'}</span>
+            Piotr
+          <span className="About__syntax">{'>'}</span>
         </h1>
         <p className="lead About__descritpion About__descritpion--top ">
           {content.description_top_pl}
@@ -38,19 +49,23 @@ class About extends React.Component {
       </div>
     );
   };
+
   renderEngContent = () => {
     const {
-      about: { aboutData }
+      about: { aboutData },
     } = this.props;
-    const content = aboutData["eng"].reduce((acc, item) => {
+    const content = aboutData.eng.reduce((acc, item) => {
       acc[item.field] = item.text;
       return acc;
     }, {});
     return (
       <div className="jumbotron About__content content-wrapper">
         <h1 className="display-3 About__title">
-          {`Hey I'm`} <span className="About__syntax">{`<`}</span>Piotr
-          <span className="About__syntax">{`>`}</span>
+          {'Hey I\'m'}
+          {' '}
+          <span className="About__syntax">{'<'}</span>
+Piotr
+          <span className="About__syntax">{'>'}</span>
         </h1>
         <p className="lead About__descritpion About__descritpion--top ">
           {content.description_top_eng}
@@ -70,25 +85,25 @@ class About extends React.Component {
       </div>
     );
   };
+
   render() {
     const {
       about: { aboutData, aboutFailure },
-      currentLanguage
+      currentLanguage,
     } = this.props;
-    console.log(currentLanguage, "currentLanguage");
     return (
       <section className="About">
         {aboutData && !aboutFailure ? (
           <div>
-            {currentLanguage === "PL" ? (
+            {currentLanguage === 'PL' ? (
               <>{this.renderPlContent()}</>
             ) : (
               <>{this.renderEngContent()}</>
             )}
           </div>
         )
-        : <p>Loading....</p>
-      }
+          : <p>Loading....</p>
+        }
       </section>
     );
   }

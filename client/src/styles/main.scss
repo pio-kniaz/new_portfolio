@@ -1,4 +1,5 @@
-@import '~bootstrap/scss/bootstrap.scss';
+@import "variables";
+@import '~bootstrap/scss/bootstrap';
 @import 'react-toastify/scss/main.scss';
 @import "Global/_Global";
 @import "About/_About";
@@ -9,3 +10,4 @@
 @import "Inputs/_Inputs";
 @import "AdminPanel/_Admin_Panel";
 @import "CMS/_CMS";
+@import "Projects/_Projects";

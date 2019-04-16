@@ -1,14 +1,15 @@
 import {
   GET_ABOUT_CMS_DATA_PENDING,
   GET_ABOUT_CMS_DATA_FULFILLED,
-  GET_ABOUT_CMS_DATA_REJECTED
-} from "redux/actionTypes";
+  GET_ABOUT_CMS_DATA_REJECTED,
+} from 'redux/actionTypes';
+
 const initialState = {
   aboutCMS: {
     aboutCMSData: null,
     aboutCMSReqest: false,
-    aboutCMSReqestFailure: false
-  }
+    aboutCMSReqestFailure: false,
+  },
 };
 
 export const reducer = (state = initialState, action) => {
@@ -18,35 +19,31 @@ export const reducer = (state = initialState, action) => {
         ...state,
         aboutCMS: {
           ...state.aboutCMS,
-          aboutCMSReqest: true
-        }
+          aboutCMSReqest: true,
+        },
       };
     case GET_ABOUT_CMS_DATA_FULFILLED:
-      const reducedData = action.payload.reduce((acc, item) => {
-        return {
-          aboutCMSDataId: item._id,
-          ...item.dataResponse.reduce((acc, elem) => {
-            return {
-              ...elem
-            };
-          })
-        };
-      }, {});
+      const reducedData = action.payload.reduce((acc, item) => ({
+        aboutCMSDataId: item._id,
+        ...item.dataResponse.reduce((acc, elem) => ({
+          ...elem,
+        })),
+      }), {});
       return {
         ...state,
         aboutCMS: {
           ...state.aboutCMS,
           aboutCMSData: reducedData,
-          aboutCMSReqest: false
-        }
+          aboutCMSReqest: false,
+        },
       };
     case GET_ABOUT_CMS_DATA_REJECTED:
       return {
         ...state,
         aboutCMS: {
           ...state.aboutCMS,
-          aboutCMSReqestFailure: true
-        }
+          aboutCMSReqestFailure: true,
+        },
       };
     default:
       return state;

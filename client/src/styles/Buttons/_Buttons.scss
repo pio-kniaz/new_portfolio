@@ -6,7 +6,8 @@
   font-weight: 700;
   padding: 0.475rem 0.95rem;
   border-color: #fff;
-  background: #b1ff1e;
+  // background: #b1ff1e;
+  background: #efbb35;
   &--lg {
     padding: 0.5rem 1rem;
     min-width: 100px;
@@ -16,7 +17,8 @@
     border-color: #fff;
     transform: scale(1);
     transition: transform 0.3s linear;
-    background: #b1ff1e;
+    // background: #b1ff1e;
+    background: #efbb35;
     color: black;
   }
 }

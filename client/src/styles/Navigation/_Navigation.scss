@@ -24,7 +24,8 @@
     border-color: #fff;
     &--active {
       border-color: #fff;
-      background: #b1ff1e;
+      // background: #b1ff1e;
+      background: #efbb35;
       color: black;
       transform: scale(1);
       transition: transform 0.3s linear;
@@ -34,7 +35,8 @@
     border-color: #fff;
     transform: scale(1);
     transition: transform 0.3s linear;
-    background: #b1ff1e;
+    // background: #b1ff1e;
+    background: #efbb35;
     color: black;
   }
 }

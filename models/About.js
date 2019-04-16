@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-var AboutSchema = new Schema({
+const AboutSchema = new Schema({
   updated: Date,
   dataResponse: [{
     pl:[{
