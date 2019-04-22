@@ -17,6 +17,9 @@ const ProjectSchema = new Schema({
   hidden: {
     type: Boolean,
     default: false,
-  }
+  },
+  image: {
+    type: Buffer,
+  },
 });
 module.exports = Project = mongoose.model("project", ProjectSchema);

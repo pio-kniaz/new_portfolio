@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormGroup, Input, Label } from 'reactstrap';
 import PropTypes from 'prop-types';
+import InputFile from 'components/layout/component/form-builder/InputFile';
 
 class FormBuilder extends React.Component {
   static propTypes = {
@@ -67,6 +68,10 @@ class FormBuilder extends React.Component {
               {...input}
             />
           </FormGroup>
+        );
+      case 'file':
+        return (
+          <InputFile {...this.props} />
         );
       default:
         return null;

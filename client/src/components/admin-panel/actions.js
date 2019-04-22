@@ -125,8 +125,14 @@ export const addNewProject = newProject => async (dispatch) => {
     type: ADD_PROJECT_CMS_DATA_PENDING,
     payload: true,
   });
+  const formData = new FormData();
+  formData.append('image', newProject.image);
+  const newData = {
+    ...newProject,
+  };
   try {
-    const { data } = await axios.post(`${api._baseURL}/project`, newProject);
+    const { data } = await axios.post(`${api._baseURL}/project/`, newData);
+    await axios.put(`${api._baseURL}/project/images/${data._id}`, formData);
     dispatch({
       type: ADD_PROJECT_CMS_DATA_FULFILLED,
       payload: data,

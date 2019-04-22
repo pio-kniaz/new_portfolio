@@ -2,6 +2,7 @@ import React from 'react';
 import { Row, Container, Col } from 'reactstrap';
 import Project from 'components/projects/component/Project';
 import PropTypes from 'prop-types';
+import api from 'api/api';
 
 class ProjectList extends React.Component {
   static propTypes = {
@@ -27,9 +28,18 @@ class ProjectList extends React.Component {
           <h2 className="Global__title">Projects</h2>
           <Row className="Projects__row">
             {projects
-              && projects.filter(elem => elem.hidden !== false)
+              && projects.filter(elem => elem.hidden === false)
                 .map(project => (
-                  <Col key={project._id} lg="12" md="12" sm="36" className="Projects__box">
+                  <Col
+                    key={project._id}
+                    lg="12"
+                    md="12"
+                    sm="36"
+                    className="Projects__box"
+                    style={{
+                      backgroundImage: `url(${api._baseURL}/project/${project._id}/image)`,
+                    }}
+                  >
                     <Project {...project} />
                   </Col>
                 ))

@@ -9,7 +9,9 @@
     margin: 35px auto;
   }
   &__box {
-    background-color: $yellow;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     min-height: 250px;
     position: relative;
     transform: scale(0.9);
