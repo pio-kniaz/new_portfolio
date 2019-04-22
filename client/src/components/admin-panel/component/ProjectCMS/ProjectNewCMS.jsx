@@ -52,7 +52,8 @@ class ProjectNewCMS extends React.Component {
   );
 
   addNewProject = (values) => {
-    const { addNewProjectAction } = this.props;
+    console.log(values);
+    const { addNewProjectAction, reset } = this.props;
     if (values) {
       const filterTechnologies = Object.keys(values).filter(key => key.includes('technologies'));
       const technologies = filterTechnologies.map(elem => elem.split('_')[1]);
@@ -60,10 +61,12 @@ class ProjectNewCMS extends React.Component {
         name: values.projectName,
         url: values.url,
         technologies,
+        image: values.image,
       };
       addNewProjectAction(newProjectData).then(() => {
         successToast('New Project has been added');
         this.toggleModalAddNewProject();
+        reset('addNewProject');
       })
         .catch(() => failureToast('Unable to add new project'));
     }
@@ -73,7 +76,7 @@ class ProjectNewCMS extends React.Component {
     const { handleSubmit } = this.props;
     return (
       <Form onSubmit={handleSubmit(this.addNewProject)}>
-        <Row fluid noGutters className="ProjectCMS__text-inputs">
+        <Row fluid="true" noGutters className="ProjectCMS__text-inputs">
           <Col xs="36">
             <Field
               label="Project Name"
@@ -89,12 +92,17 @@ class ProjectNewCMS extends React.Component {
               name="url"
               component={FormBuilder}
             />
+            <Field
+              name="image"
+              component={FormBuilder}
+              type="file"
+            />
           </Col>
         </Row>
-        <Row fluid noGutters className="ProjectCMS__text-inputs">
+        <Row noGutters className="ProjectCMS__text-inputs">
           {this.renderCheckboxes()}
           <Col xs="36">
-            <Button outline color="success">
+            <Button block outline color="success">
               Submit
             </Button>
           </Col>

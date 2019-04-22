@@ -9,7 +9,6 @@ const about = require("./routes/api/about");
 const users = require("./routes/api/users");
 // Project
 const project = require("./routes/api/projects");
-
 // Body Parserr Middleware
 app.use(cors());
 app.use(express.json());

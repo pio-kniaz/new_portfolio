@@ -3,6 +3,7 @@ import Project from 'components/projects/component/Project';
 import { Row, Container, Col } from 'reactstrap';
 import ProjectNewCMS from 'components/admin-panel/component/ProjectCMS/ProjectNewCMS';
 import PropTypes from 'prop-types';
+import api from 'api/api';
 
 class ProjectCMS extends React.Component {
   static propTypes = {
@@ -38,7 +39,16 @@ class ProjectCMS extends React.Component {
             {projectsCMSData
               && projectsCMSData
                 .map(elem => (
-                  <Col key={elem._id} lg="12" md="12" sm="36" className="Projects__box">
+                  <Col
+                    key={elem._id}
+                    lg="12"
+                    md="12"
+                    sm="36"
+                    className="Projects__box"
+                    style={{
+                      backgroundImage: `url(${api._baseURL}/project/${elem._id}/image)`,
+                    }}
+                  >
                     <Project
                       editable
                       showOrHideProject={showOrHideProject}

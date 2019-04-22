@@ -33,6 +33,7 @@ const Project = (props) => {
         </>
       )}
       <div className="Projects__tech">
+        <img src="data:image/jpg;base64,"/>
         {elem.technologies.map((obj, i) => (
           <div key={i}>
             {obj === 'js' && <FontAwesomeIcon size="2x" icon={faJs} />}
