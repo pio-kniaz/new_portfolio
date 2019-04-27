@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import AboutPage from 'page/AboutPage';
 import ProjectsPage from 'page/ProjectsPage';
 import ContactPage from 'page/ContactPage';
-import AdminPanelPage from 'page/AdminPanelPage';
+
+const AdminPanelPage = React.lazy(() => import('page/AdminPanelPage'));
 
 const Routes = () => (
   <BrowserRouter>
@@ -11,7 +12,15 @@ const Routes = () => (
       <Route path="/" exact component={AboutPage} />
       <Route path="/projects" exact component={ProjectsPage} />
       <Route path="/contact" exact component={ContactPage} />
-      <Route path="/cms" exact component={AdminPanelPage} />
+      <Route
+        path="/cms"
+        exact
+        render={() => (
+          <Suspense fallback={<div>Loading....</div>}>
+            <AdminPanelPage />
+          </Suspense>
+        )}
+      />
     </Switch>
   </BrowserRouter>
 );
