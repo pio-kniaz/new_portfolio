@@ -5,9 +5,7 @@ const aboutValidationFields = require("../../validation/AboutFields");
 // IDEA: this POST route its only for testing purpose
 router.post("/about", (req, res) => {
   const newAbout = new About({
-    // name: req.body.name,
     updated: new Date().toString(),
-    // pl: req.body.pl,
     dataResponse: req.body.data,
   });
   newAbout
@@ -15,33 +13,7 @@ router.post("/about", (req, res) => {
     .then(aboutResp => res.json(aboutResp))
     .catch(err => res.status(400).send(err));
 });
-// IDEA: this POST route its only for testing purpose
-// router.post("/about", (req, res) => {
-//   const newAbout = new About({
-//     data: {
-//       title: {
-//         text: req.body.title,
-//         label: "Title",
-//         fieldName: "title"
-//       },
-//       topDescription: {
-//         text: req.body.topDescription,
-//         label: "Top Description",
-//         fieldName: "topDescription"
-//       },
-//       bottomDescription: {
-//         text: req.body.bottomDescription,
-//         label: "Bottom Description",
-//         fieldName: "bottomDescription"
-//       }
-//     },
-//     updated: new Date().toString(),
-//   });
-//   newAbout
-//     .save()
-//     .then(aboutResp => res.json(aboutResp))
-//     .catch(err => res.status(400).send(err));
-// });
+
 router.get("/about", (req, res) => {
   About.find()
     .then(aboutResp => {

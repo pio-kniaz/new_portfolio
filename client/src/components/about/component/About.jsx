@@ -22,7 +22,6 @@ class About extends React.Component {
       acc[item.field] = item.text;
       return acc;
     }, {});
-    console.log(content, 'content');
     return (
       <div className="jumbotron About__content content-wrapper">
         <h1 className="display-3 About__title">
@@ -41,7 +40,7 @@ class About extends React.Component {
         <p className="lead">
           <Link
             to="/contact"
-            className="mt-3 btn btn-primary btn-lg btn__green"
+            className="mt-3 btn btn-lg btn__yellow"
           >
             Contact!
           </Link>
@@ -77,7 +76,7 @@ Piotr
         <p className="lead">
           <Link
             to="/contact"
-            className="mt-3 btn btn-primary btn-lg btn__green"
+            className="mt-3 btn btn-lg btn__yellow"
           >
             Contact!
           </Link>

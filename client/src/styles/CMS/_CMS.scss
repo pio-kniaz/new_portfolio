@@ -4,7 +4,12 @@
 
 .About-CMS {
   &__title {
-    margin-bottom: 25px;
+    margin: 25px 15px 0 15px;
+    border-bottom: 2px solid $yellow;
+    padding: 15px;
+  }
+  &__title:last-of-type {
+    padding-top: 0;
   }
 }
 .ProjectCMS {

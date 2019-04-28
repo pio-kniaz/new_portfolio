@@ -1,0 +1,15 @@
+.Contact {
+  width: 80%;
+  &__content {
+    background-color: transparent;
+    margin-bottom: 25px;
+  }
+  &__title {
+    font-size: 3rem;
+  }
+  &__ContactForm {
+    padding-top: 50px;
+    max-width: 400px;
+    margin: auto;
+  }
+}

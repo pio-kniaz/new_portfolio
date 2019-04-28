@@ -35,14 +35,12 @@ class FormBuilder extends React.Component {
         return (
           <FormGroup>
             <Label>{label}</Label>
-            <Input type="textarea" placeholder={placeholder} {...input} />
-            {touched
-              && ((error && (
-                <span className="CreateNewCheckList__error d-block error">
-                  {error}
-                </span>
-              ))
-                || (warning && <span>{warning}</span>))}
+            <Input
+              className={touched && error ? 'Input Input--invalid' : 'Input'}
+              type="textarea"
+              placeholder={placeholder}
+              {...input}
+            />
           </FormGroup>
         );
       case 'text':
@@ -52,6 +50,18 @@ class FormBuilder extends React.Component {
             <Input
               className={touched && error ? 'Input Input--invalid' : 'Input'}
               type="text"
+              placeholder={placeholder}
+              {...input}
+            />
+          </FormGroup>
+        );
+      case 'email':
+        return (
+          <FormGroup>
+            <Label>{label}</Label>
+            <Input
+              className={touched && error ? 'Input Input--invalid' : 'Input'}
+              type="email"
               placeholder={placeholder}
               {...input}
             />

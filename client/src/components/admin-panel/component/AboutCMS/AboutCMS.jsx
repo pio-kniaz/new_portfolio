@@ -13,9 +13,19 @@ class AboutCMS extends React.Component {
     initialize: PropTypes.func.isRequired,
     updateAboutCMS: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
+    getAboutCMS: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
+    const {
+      getAboutCMS,
+    } = this.props;
+    getAboutCMS().then(() => {
+      this.initializeData();
+    });
+  }
+
+  initializeData = () => {
     const {
       aboutCMS: { aboutCMSData },
       initialize,
@@ -87,7 +97,6 @@ class AboutCMS extends React.Component {
     } = this.props;
     return (
       <Container className="About-CMS">
-        <h3 className="About-CMS__title">About Section CMS</h3>
         <div className="AdminPanel__outline">
           {aboutCMSData && (
             <Form onSubmit={handleSubmit(this.submitValue)}>
@@ -99,7 +108,7 @@ class AboutCMS extends React.Component {
                   {this.renderFieldsENG()}
                 </Col>
                 <Col xs="36">
-                  <Button outline color="success">
+                  <Button className="btn__yellow btn__yellow--noAnimation">
                     Submit
                   </Button>
                 </Col>

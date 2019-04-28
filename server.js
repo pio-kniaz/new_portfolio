@@ -9,6 +9,8 @@ const about = require("./routes/api/about");
 const users = require("./routes/api/users");
 // Project
 const project = require("./routes/api/projects");
+// Contact
+const contact = require("./routes/api/contact");
 // Body Parserr Middleware
 app.use(cors());
 app.use(express.json());
@@ -25,6 +27,8 @@ app.use("/api/", about);
 app.use("/api/users", users);
 // Project
 app.use("/api/", project);
+// Contact
+app.use("/api/", contact);
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => console.log(`server is running on port: ${PORT}`));
