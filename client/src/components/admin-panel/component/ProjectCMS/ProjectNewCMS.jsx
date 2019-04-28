@@ -25,6 +25,7 @@ class ProjectNewCMS extends React.Component {
   static propTypes = {
     addNewProjectAction: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
+    reset: PropTypes.func.isRequired,
   }
 
   toggleModalAddNewProject = () => {
@@ -52,7 +53,6 @@ class ProjectNewCMS extends React.Component {
   );
 
   addNewProject = (values) => {
-    console.log(values);
     const { addNewProjectAction, reset } = this.props;
     if (values) {
       const filterTechnologies = Object.keys(values).filter(key => key.includes('technologies'));
@@ -102,7 +102,7 @@ class ProjectNewCMS extends React.Component {
         <Row noGutters className="ProjectCMS__text-inputs">
           {this.renderCheckboxes()}
           <Col xs="36">
-            <Button block outline color="success">
+            <Button block className="btn__yellow btn__yellow--noAnimation">
               Submit
             </Button>
           </Col>
@@ -123,7 +123,7 @@ class ProjectNewCMS extends React.Component {
         </Modal>
         <Row>
           <Col xs="36">
-            <Button size="lg" onClick={this.toggleModalAddNewProject} outline color="success">
+            <Button size="lg" onClick={this.toggleModalAddNewProject} className="btn__yellow btn__yellow--noAnimation">
               Add New Project
             </Button>
           </Col>

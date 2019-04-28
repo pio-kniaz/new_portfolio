@@ -22,6 +22,12 @@ import {
   TOGGLE_PROJECT_CMS_DATA_PENDING,
   TOGGLE_PROJECT_CMS_DATA_REJECTED,
   TOGGLE_PROJECT_CMS_DATA_FULFILLED,
+  GET_EMAILS_DATA_PENDING,
+  GET_EMAILS_DATA_REJECTED,
+  GET_EMAILS_DATA_FULFILLED,
+  DELETE_EMAIL_PENDING,
+  DELETE_EMAIL_REJECTED,
+  DELETE_EMAIL_FULFILLED,
 } from 'redux/actionTypes';
 
 
@@ -159,6 +165,46 @@ export const showOrHideProject = id => async (dispatch) => {
   } catch (e) {
     dispatch({
       type: TOGGLE_PROJECT_CMS_DATA_REJECTED,
+      payload: e.response,
+    });
+  }
+};
+
+// Contact
+
+export const getEmails = () => async (dispatch) => {
+  dispatch({
+    type: GET_EMAILS_DATA_PENDING,
+    payload: true,
+  });
+  try {
+    const { data } = await axios.get(`${api._baseURL}/contact/email`);
+    dispatch({
+      type: GET_EMAILS_DATA_FULFILLED,
+      payload: data,
+    });
+  } catch (e) {
+    dispatch({
+      type: GET_EMAILS_DATA_REJECTED,
+      payload: e.response,
+    });
+  }
+};
+
+export const deleteEmail = id => async (dispatch) => {
+  dispatch({
+    type: DELETE_EMAIL_PENDING,
+    payload: true,
+  });
+  try {
+    const { data } = await axios.delete(`${api._baseURL}/contact/email/${id}`);
+    dispatch({
+      type: DELETE_EMAIL_FULFILLED,
+      payload: data,
+    });
+  } catch (e) {
+    dispatch({
+      type: DELETE_EMAIL_REJECTED,
       payload: e.response,
     });
   }

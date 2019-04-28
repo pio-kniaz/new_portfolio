@@ -20,7 +20,6 @@ class ProjectCMS extends React.Component {
   }
 
   render() {
-    console.log(this.props, 'from project cms');
     const {
       projectsCMS: {
         projectsCMSData,
@@ -32,7 +31,6 @@ class ProjectCMS extends React.Component {
     } = this.props;
     return (
       <Container>
-        <h2 className="Global__title">Projects CMS</h2>
         <div className="AdminPanel__outline">
           <ProjectNewCMS addNewProjectAction={addNewProject} />
           <Row className="Projects__row">

@@ -41,8 +41,7 @@ class InputFile extends React.Component {
           />
         </div>
         <Button
-          outline
-          color="success"
+          className="btn__yellow btn__yellow--noAnimation"
           onClick={this.openFileAttachment}
         >
           Add Image

@@ -1,9 +1,10 @@
 import React from 'react';
 import MainLayout from 'components/layout/component/main/MainLayout';
+import ContactContainer from 'components/contact/container/ContactContainer';
 
 const ContactPage = () => (
   <MainLayout>
-      ContactPage
+    <ContactContainer />
   </MainLayout>
 );
 export default ContactPage;

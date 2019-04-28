@@ -21,7 +21,6 @@ class ProjectList extends React.Component {
 
   render() {
     const { projects } = this.props;
-    console.log(projects, 'projects');
     return (
       <section className="Projects">
         <Container>
