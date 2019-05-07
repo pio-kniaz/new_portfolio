@@ -28,7 +28,6 @@ export const reducer = (state = initialState, action) => {
     case GET_PROJECTS_DATA_REJECTED:
       return {
         ...state.projects,
-        projectsData: action.payload.data,
         projectsFailure: true,
         projectsRequest: false,
 

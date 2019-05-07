@@ -32,7 +32,7 @@ export const reducer = (state = initialState, action) => {
         ...state,
         about: {
           ...state.about,
-          aboutData: reducedToObjData,
+          aboutData: action.payload.length > 0 ? reducedToObjData : null,
           aboutRequest: false,
           aboutFailure: false,
         },

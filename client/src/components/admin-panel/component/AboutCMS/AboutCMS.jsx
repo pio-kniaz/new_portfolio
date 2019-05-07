@@ -108,7 +108,7 @@ class AboutCMS extends React.Component {
                   {this.renderFieldsENG()}
                 </Col>
                 <Col xs="36">
-                  <Button className="btn__yellow btn__yellow--noAnimation">
+                  <Button className="btn__black btn__black--noAnimation">
                     Submit
                   </Button>
                 </Col>

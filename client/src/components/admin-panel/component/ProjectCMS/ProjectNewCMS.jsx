@@ -102,7 +102,7 @@ class ProjectNewCMS extends React.Component {
         <Row noGutters className="ProjectCMS__text-inputs">
           {this.renderCheckboxes()}
           <Col xs="36">
-            <Button block className="btn__yellow btn__yellow--noAnimation">
+            <Button block className="btn__black btn__black--noAnimation">
               Submit
             </Button>
           </Col>
@@ -123,7 +123,7 @@ class ProjectNewCMS extends React.Component {
         </Modal>
         <Row>
           <Col xs="36">
-            <Button size="lg" onClick={this.toggleModalAddNewProject} className="btn__yellow btn__yellow--noAnimation">
+            <Button size="lg" onClick={this.toggleModalAddNewProject} className="btn__black btn__black--noAnimation">
               Add New Project
             </Button>
           </Col>

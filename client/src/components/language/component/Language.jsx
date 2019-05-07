@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 const Language = (props) => {
@@ -10,9 +9,9 @@ const Language = (props) => {
 
   const { swichLanguageToPl, swichLanguageToEng } = props;
   return (
-    <div className="d-flex">
-      <Button onClick={swichLanguageToPl} color="warning">PL</Button>
-      <Button onClick={swichLanguageToEng} color="danger">ENG</Button>
+    <div className="Language">
+      <span className="Language__pl" onClick={swichLanguageToPl} color="warning">PL</span>
+      <span className="Language__eng" onClick={swichLanguageToEng} color="danger">ENG</span>
     </div>
   );
 };

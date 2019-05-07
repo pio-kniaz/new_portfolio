@@ -22,9 +22,12 @@ class ProjectList extends React.Component {
   render() {
     const { projects } = this.props;
     return (
-      <section className="Projects">
-        <Container>
-          <h2 className="Global__title">Projects</h2>
+      <section className="Projects Blur">
+        <div className="Skewed">
+          <div className="Skewed__layer Skewed__bottom" />
+          <div className="Skewed__layer Skewed__top" />
+        </div>
+        <Container fluid className="Projects__content">
           <Row className="Projects__row">
             {projects
               && projects.filter(elem => elem.hidden === false)

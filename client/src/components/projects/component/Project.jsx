@@ -1,13 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
-import {
-  faPhp,
-  faHtml5,
-  faCss3,
-  faJs,
-  faReact,
-} from '@fortawesome/free-brands-svg-icons';
 import PropTypes from 'prop-types';
 
 const Project = (props) => {
@@ -32,19 +25,6 @@ const Project = (props) => {
           }
         </>
       )}
-      <div className="Projects__tech">
-        <img src="data:image/jpg;base64,"/>
-        {elem.technologies.map((obj, i) => (
-          <div key={i}>
-            {obj === 'js' && <FontAwesomeIcon size="2x" icon={faJs} />}
-            {obj === 'react' && <FontAwesomeIcon size="2x" icon={faReact} />}
-            {obj === 'php' && <FontAwesomeIcon size="2x" icon={faPhp} />}
-            {obj === 'html' && <FontAwesomeIcon size="2x" icon={faHtml5} />}
-            {obj === 'css' && <FontAwesomeIcon size="2x" icon={faCss3} />}
-          </div>
-        ))
-        }
-      </div>
     </>
   );
 };

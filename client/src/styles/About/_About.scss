@@ -1,30 +1,234 @@
 .About {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-  color: #fff;
-  text-align: center;
-  &__content {
-    min-width: 800px;
-    margin: auto;
+  .About__wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 55vw;
+    overflow: hidden;
+    height: 100vh;
   }
-  &__syntax {
-    // color: #a7ff00;
-    color: #efbb35;
+
+  &__layer {
+    position: absolute;
+    width: 100vw;
+    min-height: 55vw;
+    overflow: hidden;
   }
-  &__title {
+
+  &__content-wrap {
+    position: absolute;
+    width: 100vw;
+    min-height: 55vw;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &__content-body {
+    width: 25%;
+    position: absolute;
+    top: 50%;
     text-align: center;
+    transform: translateY(-50%);
+    color: #fff;
   }
-  &__descritpion {
-    font-size: 20px;
-    font-weight: bold;
-    &--top {
-      font-size: 24px;
-      letter-spacing: 1px;
+
+  &__frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 55%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 250px;
+    padding: 25px;
+    max-width: 450px;
+    text-align: center;
+    &--white {
+      border: 5px solid white;
+      color: white;
+      font-size: 35px;
+      border-radius: 5px;
     }
+    &--black {
+      border: 5px solid $ownBlack;
+      border-radius: 5px;
+      color: black;
+      font-size: 35px;
+      strong {
+        // visibility: hidden;
+        @include media-breakpoint-down(md) {
+          &:after {
+            content: "Front";
+            animation: spin 2s linear infinite;
+          }
+        }
+      }
+    }
+    @include media-breakpoint-down(md) {
+      max-width: 550px;
+      width: 70%;
+      font-size: 30px;
+    }
+    @include media-breakpoint-down(xs) {
+      padding: 5px;
+      max-width: 80%;
+      width: 80%;
+      p {
+        font-size: 26px;
+      }
+      span {
+        font-size: 26px;
+      }
+    }
+  }
+
+  &__layer h2 {
+    font-size: 2em;
+  }
+
+  &__bottom {
+    background: $ownBlack;
+    z-index: 1;
+    height: 100vh;
+    &:hover .About__skill {
+      animation: none !important;
+    }
+  }
+
+  &__content-body {
     &--bottom {
-      font-size: 24px;
-      letter-spacing: 1px;
+      left: 100px;
+      top: 15%;
+      color: #222;
+      text-align: left;
+    }
+    &--top {
+      right: 0px;
+      top: 80%;
+      color: $gold;
+      text-align: left;
     }
   }
+  &__skills--bottom {
+    width: 350px;
+    left: 100px;
+    position: absolute;
+    top: 30px;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    // animation-name: shakeAndBlur;
+    // animation-duration: 5s;
+    // animation-iteration-count: infinite;
+  }
+  &__skills--top {
+    width: 350px;
+    right: 50px;
+    position: absolute;
+    bottom: 100px;
+    text-align: center;
+    color: #fff;
+    color: red;
+    display: flex;
+    flex-direction: column;
+    color: #141414;
+    // animation-name: shakeAndBlur;
+    // animation-duration: 4.5s;
+    // animation-iteration-count: infinite;
+    font-weight: bold;
+  }
+
+  &__top {
+    background: #eee;
+    color: #222;
+    z-index: 2;
+    width: 50vw;
+    height: 100vh;
+  }
+
+  &__top {
+    transform: skew(-30deg);
+    margin-left: -850px;
+    width: calc(50vw + 1000px);
+    @include media-breakpoint-down(md) {
+      transform: skew(-30deg);
+      margin-left: -850px;
+      width: calc(50vw + 850px) !important;
+    }
+  }
+
+  &__top .About__content-wrap {
+    transform: skew(30deg);
+    margin-left: 850px;
+  }
+
+  @media (max-width: 768px) {
+    body {
+      font-size: 75%;
+    }
+  }
+}
+
+.rubberBand {
+  animation-name: shakeAndBlur;
+}
+
+// @keyframes shakeAndBlur {
+//   5%,
+//   15%,
+//   25%,
+//   35%,
+//   55%,
+//   65%,
+//   75%,
+//   95% {
+//     filter: blur(0.018em);
+//     transform: translateY(0.035em) rotate(0deg);
+//   }
+//
+//   10%,
+//   30%,
+//   40%,
+//   50%,
+//   70%,
+//   80%,
+//   90% {
+//     filter: blur(0.01em);
+//     transform: translateY(-0.035em) rotate(0deg);
+//   }
+//
+//   20%,
+//   60% {
+//     filter: blur(0.15em);
+//     transform: translate(-0.118em, 0.018em) rotate(0deg);
+//   }
+//
+//   45%,
+//   85% {
+//     filter: blur(0.2em);
+//     transform: translate(0.018em, -0.018em) rotate(0deg);
+//   }
+//
+//   100% {
+//     filter: blur(0.007em);
+//     transform: translate(0) rotate(-0.5deg);
+//   }
+// }
+@keyframes spin {
+  0% { content:"Front" }
+  10% { content:"Back" }
+  20% { content:"Front" }
+  30% { content:"Back" }
+  40% { content:"Front" }
+  50% { content: "Back" }
+  60% { content: "Front" }
+  70% { content: "Front" }
+  80% { content: "Front" }
+  90% { content: "Front" }
+  100% { content: "Front" }
 }

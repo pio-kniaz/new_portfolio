@@ -4,7 +4,7 @@ import AdminPanelContainer from 'components/admin-panel/container/AdminPanelCont
 
 const AdminPanelPage = () => (
   <>
-    <MainLayout adminPanel>
+    <MainLayout>
       <AdminPanelContainer />
     </MainLayout>
   </>

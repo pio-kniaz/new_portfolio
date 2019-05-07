@@ -1,19 +1,19 @@
-.btn__yellow {
-  color: black;
+.btn__black {
+  color: $ownBlack;
   font-size: 20px;
   transform: scale(.85);
   transition: transform 0.3s linear;
   font-weight: 700;
   padding: 0.475rem 0.95rem;
   border-color: #fff;
-  background: #efbb35;
+  background: transparent;
+  border: 3px solid $ownBlack;
   &:hover {
-    border-color: #fff;
+    border-color: $ownBlack;
     transform: scale(1);
     transition: transform 0.3s linear;
-    // background: #b1ff1e;
-    background: #efbb35;
-    color: black;
+    background: $ownBlack;
+    color: $white;
   }
   &--noAnimation {
     transform: scale(1);

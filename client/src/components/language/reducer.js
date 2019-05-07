@@ -1,7 +1,7 @@
 import { SWICH_TO_ENG, SWICH_TO_PL } from 'redux/actionTypes';
 
 const initialState = {
-  language: 'ENG',
+  language: 'eng',
 };
 
 export const reducer = (state = initialState, action) => {

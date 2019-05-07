@@ -1,0 +1,40 @@
+.Language {
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 120px;
+  z-index: 101;
+  @include media-breakpoint-down(sm) {
+    transform: scale(0.75);
+    top: 5px;
+    right: 0;
+  }
+  &__pl {
+    color: $gold;
+    font-weight: bold;
+    border: 2px solid $gold;
+    padding: 3px;
+    border-radius: 25px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  &__eng {
+    color: $gold;
+    font-weight: bold;
+    border: 2px solid $gold;
+    padding: 3px;
+    border-radius: 25px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+}

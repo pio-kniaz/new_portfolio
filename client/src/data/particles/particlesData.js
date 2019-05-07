@@ -1,63 +1,51 @@
 export const particleOption = {
   particles: {
     number: {
-      value: 40,
+      value: 3,
       density: {
         enable: true,
-        value_area: 1000
-      }
-    },
-    color: {
-      value: [
-        "#fff",
-        "#bada55",
-        "#c55",
-        "#fb1",
-        "#d11d05",
-        "10aded",
-        "#1ce",
-        "#c0ff33",
-        "#02ac1e",
-        "#0ff",
-        "#0ff1ce",
-        "#b1eb32",
-        "#9077e2",
-        "#91ea53",
-        "#5eabed",
-        "#b3f023",
-        "#0dd",
-        "#c0de25",
-        "#B1FF1E",
-        "#11F7ED",
-        "#D1E",
-        "#BAFF1E"
-      ]
+        value_area: 1000,
+      },
     },
     shape: {
-      type: ["image0", "star", "triangle"],
-      stroke: {
-        width: 0,
-        color: "#000000"
-      },
-      polygon: {
-        nb_sides: 5
-      },
-      image0: {
-        src:
-          "https://images.vexels.com/media/users/3/147915/isolated/preview/8faf990ee2dd330bd53b0440298f06f2-photo-camera-sketch-by-vexels.png",
-        width: 100,
-        height: 100
-      }
+      type: 'images',
+      images: [
+        {
+          src: 'https://d2eip9sf3oo6c2.cloudfront.net/tags/images/000/000/026/full/react.png',
+          width: 100,
+          height: 100,
+        },
+        {
+          src: 'https://cdn.iconscout.com/icon/free/png-256/nodejs-6-569582.png',
+          width: 100,
+          height: 100,
+        },
+        {
+          src: 'https://seeklogo.com/images/R/redux-logo-9CA6836C12-seeklogo.com.png',
+          width: 100,
+          height: 100,
+        },
+        {
+          src: 'https://seeklogo.com/images/R/redux-logo-9CA6836C12-seeklogo.com.png',
+          width: 100,
+          height: 100,
+        },
+        // {
+        //   src: 'homer.svg',
+        //   width: 100,
+        //   height: 100,
+        // },
+      ],
     },
     opacity: {
       value: 0.5602948255589136,
-      random: true,
+      random: false,
       anim: {
-        enable: false,
+        enable: true,
         speed: 1,
         opacity_min: 0.1,
-        sync: false
-      }
+        sync: true,
+      },
     },
     size: {
       value: 31.565905665290902,
@@ -66,29 +54,68 @@ export const particleOption = {
         enable: false,
         speed: 40,
         size_min: 0.1,
-        sync: false
-      }
+        sync: false,
+      },
     },
     line_linked: {
       enable: false,
       distance: 0,
-      color: "#12896d",
+      color: '#12896d',
       opacity: 0.05524033491425909,
-      width: 1.736124811591
+      width: 1.736124811591,
     },
     move: {
       enable: true,
       speed: 6,
-      direction: "none",
+      direction: 'none',
       random: false,
       straight: false,
-      out_mode: "out",
+      out_mode: 'out',
       bounce: false,
       attract: {
         enable: false,
         rotateX: 600,
-        rotateY: 1200
-      }
-    }
-  }
+        rotateY: 1200,
+      },
+    },
+  },
+  interactivity: {
+    detect_on: 'canvas',
+    events: {
+      onhover: {
+        enable: true,
+        mode: 'remove',
+      },
+      onclick: {
+        enable: true,
+        mode: 'push',
+      },
+      resize: true,
+    },
+    modes: {
+      grab: {
+        distance: 140,
+        line_linked: {
+          opacity: 1,
+        },
+      },
+      bubble: {
+        distance: 400,
+        size: 40,
+        duration: 2,
+        opacity: 8,
+        speed: 3,
+      },
+      repulse: {
+        distance: 2000,
+        duration: 0.4,
+      },
+      push: {
+        particles_nb: 4,
+      },
+      remove: {
+        particles_nb: 5,
+      },
+    },
+  },
 };
