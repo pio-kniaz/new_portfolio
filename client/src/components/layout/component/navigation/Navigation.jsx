@@ -53,7 +53,7 @@ const Navigation = (props) => {
             <FontAwesomeIcon
               onClick={logOutUser}
               icon={faSignOutAlt}
-              color="#b1ff1e"
+              color="#fff"
               size="lg"
             />
           </li>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ContactForm from 'components/contact/component/ContactForm';
 import ContactMap from 'components/contact/component/ContactMap';
 import { Row, Col } from 'reactstrap';
+import Loader from 'components/layout/component/loader/Loader';
 
 class Contact extends React.Component {
   static propTypes = {
@@ -67,7 +68,7 @@ class Contact extends React.Component {
             {this.renderContactContent(currentLanguage)}
           </>
         )
-          : <p>Loading....</p>
+          : <Loader />
         }
       </section>
     );

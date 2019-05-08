@@ -3,6 +3,7 @@ import { Row, Container, Col } from 'reactstrap';
 import Project from 'components/projects/component/Project';
 import PropTypes from 'prop-types';
 import api from 'api/api';
+import Loader from 'components/layout/component/loader/Loader';
 
 class ProjectList extends React.Component {
   static propTypes = {
@@ -30,7 +31,7 @@ class ProjectList extends React.Component {
         <Container fluid className="Projects__content">
           <Row className="Projects__row">
             {projects
-              && projects.filter(elem => elem.hidden === false)
+              ? projects.filter(elem => elem.hidden === false)
                 .map(project => (
                   <Col
                     key={project._id}
@@ -45,6 +46,7 @@ class ProjectList extends React.Component {
                     <Project {...project} />
                   </Col>
                 ))
+              : <Loader />
             }
           </Row>
         </Container>

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { FormGroup, Input, Label } from 'reactstrap';
 import PropTypes from 'prop-types';
 import InputFile from 'components/layout/component/form-builder/InputFile';
 
-class FormBuilder extends React.Component {
+class FormBuilder extends PureComponent {
   static propTypes = {
     input: PropTypes.object.isRequired,
     meta: PropTypes.object.isRequired,

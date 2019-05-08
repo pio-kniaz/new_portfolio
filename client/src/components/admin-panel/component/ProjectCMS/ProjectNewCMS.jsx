@@ -123,7 +123,7 @@ class ProjectNewCMS extends React.Component {
         </Modal>
         <Row>
           <Col xs="36">
-            <Button size="lg" onClick={this.toggleModalAddNewProject} className="btn__black btn__black--noAnimation">
+            <Button size="lg" onClick={this.toggleModalAddNewProject} className="btn__gold mb-4">
               Add New Project
             </Button>
           </Col>

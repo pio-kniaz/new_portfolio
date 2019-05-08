@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Loader from 'components/layout/component/loader/Loader';
 
 class About extends React.Component {
   state = {
@@ -31,6 +32,7 @@ class About extends React.Component {
   }
 
   componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
     const wrapper = document.querySelector('.About__wrapper');
     wrapper.removeEventListener('mousemove', e => this.calculateSkew(e));
   }
@@ -68,8 +70,8 @@ class About extends React.Component {
             {clientWidth > 992
               && (
                 <div className="About__content-body About__content-body--top">
-                  <h2>Back End</h2>
-                  <p>{content.description_front_top}</p>
+                  <h2>{content.title_back}</h2>
+                  <p>{content.description_back_top}</p>
                   <p>{content.description_back_bottom}</p>
                 </div>
               )
@@ -92,7 +94,7 @@ class About extends React.Component {
               clientWidth > 992
               && (
                 <div className="About__content-body About__content-body--bottom">
-                  <h2>Font End</h2>
+                  <h2>{content.title_front}</h2>
                   <p>{content.description_front_top}</p>
                   <p>{content.description_front_bottom}</p>
                 </div>
@@ -126,7 +128,7 @@ class About extends React.Component {
             {this.customLayerRender(currentLanguage)}
           </div>
         )
-          : <p>Loading....</p>
+          : <Loader />
         }
       </section>
     );

@@ -3,6 +3,22 @@
 }
 
 .About-CMS {
+  &__tabs-nav {
+    display: flex;
+    justify-content: space-between;
+    max-width: 350px;
+    margin: auto;
+    margin-bottom: -40px;
+    li {
+      a {
+        background-color: $ownBlack;
+        color: $ownBlack;
+      }
+    }
+  }
+  &__tab-content {
+    padding-top: 40px;
+  }
   &__title {
     margin: 25px 15px 0 15px;
     border-bottom: 2px solid $yellow;
