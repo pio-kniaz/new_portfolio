@@ -20,6 +20,7 @@ class AdminPanel extends React.Component {
     setCurrentUser: PropTypes.func.isRequired,
     logOutUser: PropTypes.func.isRequired,
     logIn: PropTypes.func.isRequired,
+    logInEnd: PropTypes.func.isRequired,
     currentUser: PropTypes.object.isRequired,
   }
 
@@ -38,6 +39,11 @@ class AdminPanel extends React.Component {
         (window.location.href = './');
       }
     }
+  }
+
+  componentWillUnmount() {
+    const { logInEnd } = this.props;
+    logInEnd();
   }
 
   openCollapsedSection = (name) => {

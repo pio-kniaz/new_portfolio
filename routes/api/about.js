@@ -33,23 +33,39 @@ router.put("/about/:id", (req, res) => {
 
   About.findOneAndUpdate({ _id: idToFind })
     .then(foundedAboutObj => {
-      // PL data
-      const titlePL = foundedAboutObj.dataResponse[0].pl.find((elem)=>elem.field === 'title_pl');
-      const descriptionTopPL = foundedAboutObj.dataResponse[0].pl.find((elem)=>elem.field === 'description_top_pl');
-      const descriptionBottomPL = foundedAboutObj.dataResponse[0].pl.find((elem)=>elem.field === 'description_bottom_pl');
+      // PL data Front
+      const titleFrontPl = foundedAboutObj.dataResponse[0].pl.find((elem)=>elem.field === 'title_front_pl');
+      const descriptionFrontTopPl = foundedAboutObj.dataResponse[0].pl.find((elem)=>elem.field === 'description_front_top_pl');
+      const descriptionFrontBottomPl = foundedAboutObj.dataResponse[0].pl.find((elem)=>elem.field === 'description_front_bottom_pl');
 
-      titlePL.text = req.body.title_pl;
-      descriptionTopPL.text = req.body.description_top_pl;
-      descriptionBottomPL.text = req.body.description_bottom_pl;
+      titleFrontPl.text = req.body.title_front_pl;
+      descriptionFrontTopPl.text = req.body.description_front_top_pl;
+      descriptionFrontBottomPl.text = req.body.description_front_bottom_pl;
+      // PL data Back end
+      const titleBackPl = foundedAboutObj.dataResponse[0].pl.find((elem)=>elem.field === 'title_back_pl');
+      const descriptionBackTopPl = foundedAboutObj.dataResponse[0].pl.find((elem)=>elem.field === 'description_back_top_pl');
+      const descriptionBackBottomPl = foundedAboutObj.dataResponse[0].pl.find((elem)=>elem.field === 'description_back_bottom_pl');
 
-      // ENG data
-      const titleENG = foundedAboutObj.dataResponse[0].eng.find((elem)=>elem.field === 'title_eng');
-      const descriptionTopENG = foundedAboutObj.dataResponse[0].eng.find((elem)=>elem.field === 'description_top_eng');
-      const descriptionBottomENG = foundedAboutObj.dataResponse[0].eng.find((elem)=>elem.field === 'description_bottom_eng');
+      titleBackPl.text = req.body.title_back_pl;
+      descriptionBackTopPl.text = req.body.description_back_top_pl;
+      descriptionBackBottomPl.text = req.body.description_back_bottom_pl;
 
-      titleENG.text = req.body.title_eng;
-      descriptionTopENG.text = req.body.description_top_eng;
-      descriptionBottomENG.text = req.body.description_bottom_eng;
+      // ENG data Front
+      const titleFrontEng = foundedAboutObj.dataResponse[0].eng.find((elem)=>elem.field === 'title_front_eng');
+      const descriptionFrontTopEng = foundedAboutObj.dataResponse[0].eng.find((elem)=>elem.field === 'description_front_top_eng');
+      const descriptionFrontBottomEng = foundedAboutObj.dataResponse[0].eng.find((elem)=>elem.field === 'description_front_bottom_eng');
+
+      titleFrontEng.text = req.body.title_front_eng;
+      descriptionFrontTopEng.text = req.body.description_front_top_eng;
+      descriptionFrontBottomEng.text = req.body.description_front_bottom_eng;
+      // ENG data Back end
+      const titleBackEng = foundedAboutObj.dataResponse[0].eng.find((elem)=>elem.field === 'title_back_eng');
+      const descriptionBackTopEng = foundedAboutObj.dataResponse[0].eng.find((elem)=>elem.field === 'description_back_top_eng');
+      const descriptionBackBottomEng = foundedAboutObj.dataResponse[0].eng.find((elem)=>elem.field === 'description_back_bottom_eng');
+
+      titleBackEng.text = req.body.title_back_eng;
+      descriptionBackTopEng.text = req.body.description_back_top_eng;
+      descriptionBackBottomEng.text = req.body.description_back_bottom_eng;
       foundedAboutObj.save(error => {
         if (error) {
           res.status(400).send(error);

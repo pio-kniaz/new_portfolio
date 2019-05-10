@@ -52,7 +52,7 @@ router.post("/contact/email", (req, res)=>{
   newEmail
     .save()
       .then((emailResp)=>res.json(
-        selectedLanguage === "ENG"
+        selectedLanguage === "eng"
         ? `Thank you for your message ${emailResp.name}`
         : `Dziekuje za wiadomość ${emailResp.name}`
        )

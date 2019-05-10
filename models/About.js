@@ -9,12 +9,14 @@ const AboutSchema = new Schema({
       text: String,
       label: String,
       field: String,
+      fieldName: String,
     }],
     eng:[{
       title: String,
       text: String,
       label: String,
       field: String,
+      fieldName: String,
     }],
   }]
 })

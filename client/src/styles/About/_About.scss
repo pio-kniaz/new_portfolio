@@ -1,30 +1,293 @@
 .About {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-  color: #fff;
-  text-align: center;
-  &__content {
-    min-width: 800px;
-    margin: auto;
+  .About__wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 55vw;
+    overflow: hidden;
+    height: 100vh;
   }
-  &__syntax {
-    // color: #a7ff00;
-    color: #efbb35;
+
+  &__layer {
+    position: absolute;
+    width: 100vw;
+    min-height: 55vw;
+    overflow: hidden;
   }
-  &__title {
+
+  &__content-wrap {
+    position: absolute;
+    width: 100vw;
+    min-height: 55vw;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &__content-body {
+    width: 25%;
+    position: absolute;
+    top: 50%;
     text-align: center;
+    transform: translateY(-50%);
+    color: $white;
   }
-  &__descritpion {
-    font-size: 20px;
-    font-weight: bold;
-    &--top {
-      font-size: 24px;
-      letter-spacing: 1px;
+
+  &__frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 55%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 250px;
+    padding: 25px;
+    max-width: 450px;
+    text-align: center;
+    &--white {
+      border: 5px solid white;
+      color: white;
+      font-size: 35px;
+      border-radius: 5px;
     }
+    &--black {
+      border: 5px solid $ownBlack;
+      border-radius: 5px;
+      color: black;
+      font-size: 35px;
+      strong {
+        @include media-breakpoint-down(md) {
+          &:after {
+            content: "Front";
+            animation: showText 8s linear infinite;
+          }
+        }
+      }
+    }
+    @include media-breakpoint-down(md) {
+      max-width: 550px;
+      width: 70%;
+      font-size: 30px;
+    }
+    @include media-breakpoint-down(xs) {
+      padding: 5px;
+      max-width: 80%;
+      width: 80%;
+      p {
+        font-size: 26px;
+      }
+      span {
+        font-size: 26px;
+      }
+    }
+  }
+
+  &__layer h2 {
+    font-size: 2em;
+  }
+
+  &__bottom {
+    background: $ownBlack;
+    z-index: 1;
+    height: 100vh;
+    &:hover .About__skill {
+      animation: none !important;
+    }
+  }
+
+  &__content-body {
     &--bottom {
-      font-size: 24px;
-      letter-spacing: 1px;
+      left: 100px;
+      top: 15%;
+      color: #222;
+      text-align: left;
     }
+    &--top {
+      right: 30px;
+      top: 80%;
+      color: $gold;
+      text-align: left;
+    }
+  }
+  &__skills--bottom {
+    max-width: 100px;
+    left: 120px;
+    position: absolute;
+    top: 110px;
+    text-align: center;
+    color: $white;
+    &:after {
+      content: "";
+      font-weight: bold;
+      font-size: 18px;
+      animation: frontEndTech 7s linear infinite;
+    }
+  }
+  &__skills--top {
+    max-width: 150px;
+    right: 120px;
+    position: absolute;
+    bottom: 110px;
+    text-align: center;
+    color: $ownBlack;
+    &:after {
+      content: "";
+      font-weight: bold;
+      font-size: 18px;
+      animation: backEndTech 4s linear infinite;
+    }
+  }
+
+  &__top {
+    background: #eee;
+    color: #222;
+    z-index: 2;
+    width: 50vw;
+    height: 100vh;
+  }
+
+  &__top {
+    transform: skew(-30deg);
+    margin-left: -850px;
+    width: calc(50vw + 1000px);
+    @include media-breakpoint-down(md) {
+      transform: skew(-30deg);
+      margin-left: -850px;
+      width: calc(50vw + 850px) !important;
+    }
+  }
+
+  &__top .About__content-wrap {
+    transform: skew(30deg);
+    margin-left: 850px;
+  }
+
+  @media (max-width: 768px) {
+    body {
+      font-size: 75%;
+    }
+  }
+}
+
+@keyframes showText {
+  0% {
+    content: "Front";
+  }
+  10% {
+    content: "Back";
+  }
+  20% {
+    content: "Front";
+  }
+  30% {
+    content: "Back";
+  }
+  40% {
+    content: "Front";
+  }
+  50% {
+    content: "Back";
+  }
+  60% {
+    content: "Front";
+  }
+  70% {
+    content: "Back";
+  }
+  80% {
+    content: "Front";
+  }
+  90% {
+    content: "Back";
+  }
+  100% {
+    content: "Front";
+  }
+}
+@keyframes backEndTech {
+  0% {
+    content: "Node.js";
+    filter: blur(0px);
+  }
+  20% {
+    content: "Express.js";
+    filter: blur(1px);
+  }
+  40% {
+    content: "MongoDB";
+    filter: blur(0px);
+  }
+  60% {
+    content: "PHP";
+    filter: blur(1px);
+  }
+  80% {
+    content: "CodeIgniter";
+    filter: blur(0px);
+  }
+  100% {
+    content: "MySQL";
+    filter: blur(1px);
+  }
+}
+@keyframes frontEndTech {
+  0% {
+    content: "HTML 5";
+    filter: blur(0px);
+    color: $white;
+  }
+  10% {
+    content: "CSS";
+    filter: blur(1px);
+    color: $gold;
+  }
+  20% {
+    content: "Java Script";
+    filter: blur(0px);
+    color: $white;
+  }
+  30% {
+    content: "Git";
+    filter: blur(1px);
+    color: $gold;
+  }
+  40% {
+    content: "NPM";
+    filter: blur(0px);
+    color: $white;
+  }
+  50% {
+    content: "jQuery";
+    filter: blur(1px);
+    color: $gold;
+  }
+  60% {
+    content: "Bootstrap";
+    filter: blur(0px);
+    color: $white;
+
+  }
+  70% {
+    content: "_lodash";
+    filter: blur(1px);
+    color: $gold;
+  }
+  90% {
+    content: "SASS";
+    filter: blur(0px);
+    color: $white;
+  }
+  80% {
+    content: "React";
+    filter: blur(1px);
+    color: $gold;
+  }
+  100% {
+    content: "Redux";
+    filter: blur(0px);
+    color: $white;
   }
 }

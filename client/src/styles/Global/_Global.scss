@@ -1,20 +1,32 @@
 html,
 body {
-  background-color: #222831;
+  background-color: $white;
+}
+.Blur {
+  transition: filter 0.5s ease-in-out;
+}
+section .Skewed .Skewed__layer {
+  position: fixed;
+  width: 100%;
+  min-height: 50vw;
+}
+.Skewed__bottom {
+  background: $ownBlack;
+  z-index: 1;
+  height: 100vh;
+}
+.Skewed__top {
+  background: #eee;
+  color: #222;
+  z-index: 2;
+  width: 50vw;
+  height: 100vh;
+  transform: skew(-30deg);
+  margin-left: -850px;
+  width: calc(50vw + 1000px);
 }
 section {
-  margin-top: 130px;
-  margin-left: auto;
-  margin-right: auto;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-  color: #fff;
-  text-align: center;
-}
-
-.content-wrapper {
-  border: 2px solid #fff;
-  background-color: transparent;
-  border-radius: 555px 25px 15px 25px/25px 5px 35px 555px;
+  @include media-breakpoint-down(sm) {
+  margin-top: 50px;
+  }
 }

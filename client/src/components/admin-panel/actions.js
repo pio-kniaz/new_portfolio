@@ -6,6 +6,7 @@ import { setAuthToken } from 'utils/authorization/setAuthToken';
 import {
   LOG_IN_USER,
   LOG_IN_USER_REJECTED,
+  LOG_IN_USER_END,
   CLEAR_LOGGED_USER,
   GET_ABOUT_CMS_DATA_PENDING,
   GET_ABOUT_CMS_DATA_REJECTED,
@@ -56,6 +57,10 @@ export const logIn = user => async (dispatch) => {
 export const clearLoggedUser = () => ({
   type: CLEAR_LOGGED_USER,
   payload: {},
+});
+
+export const logInEnd = () => ({
+  type: LOG_IN_USER_END,
 });
 
 export const logOutUser = () => (dispatch) => {

@@ -1,8 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import LanguageContainer from 'components/language/container/LanguageContainer';
+import {
+  faSignOutAlt, faUser, faEnvelope, faBriefcase,
+} from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 
 const Navigation = (props) => {
@@ -24,7 +25,7 @@ const Navigation = (props) => {
             exact
             to="/"
           >
-            About
+            <FontAwesomeIcon icon={faUser} />
           </NavLink>
         </li>
         <li className="Navigation__li">
@@ -34,7 +35,7 @@ const Navigation = (props) => {
             exact
             to="/projects"
           >
-            Projects
+            <FontAwesomeIcon icon={faBriefcase} />
           </NavLink>
         </li>
         <li className="Navigation__li">
@@ -44,18 +45,15 @@ const Navigation = (props) => {
             exact
             to="/contact"
           >
-            Contact
+            <FontAwesomeIcon icon={faEnvelope} />
           </NavLink>
-        </li>
-        <li className="Navigation__li">
-          <LanguageContainer />
         </li>
         {userData && (
           <li className="Navigation__li">
             <FontAwesomeIcon
               onClick={logOutUser}
               icon={faSignOutAlt}
-              color="#b1ff1e"
+              color="#fff"
               size="lg"
             />
           </li>
