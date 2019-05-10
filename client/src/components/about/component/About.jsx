@@ -45,7 +45,7 @@ class About extends React.Component {
     const { skew, delta } = this.state;
     this.setState({
       skew: 992,
-      delta: (e.clientX - window.innerWidth / 2) * 0.5,
+      delta: (e.clientX - window.innerWidth / 2) * 0.55,
     });
     topLayer.style.width = `${e.clientX + skew + delta}px`;
   }
@@ -78,7 +78,7 @@ class About extends React.Component {
             }
 
             <div className="About__frame About__frame--white">
-              <p>Hi I am Piotr</p>
+              <p>Piotr Kniaź</p>
               <span>
                 <strong>Back</strong>
                 {' '}
@@ -86,6 +86,7 @@ class About extends React.Component {
               </span>
             </div>
           </div>
+          <div className="About__skills--bottom" />
         </div>
 
         <div className="About__layer About__top">
@@ -101,7 +102,7 @@ class About extends React.Component {
               )
             }
             <div className="About__frame About__frame--black">
-              <p>Hi I am Piotr</p>
+              <p>Piotr Kniaź</p>
               <span>
                 {
                   clientWidth > 992 ? <strong>Front</strong> : <strong />
@@ -110,6 +111,7 @@ class About extends React.Component {
                 end Developer
               </span>
             </div>
+            <div className="About__skills--top" />
           </div>
         </div>
       </div>

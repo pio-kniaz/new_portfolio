@@ -10,13 +10,6 @@
     width: 100%;
     border: none;
   }
-  @include media-breakpoint-up(md) {
-    // &:hover + .Blur {
-    //   filter: blur(3px);
-    //   transition: filter 0.3s ease;
-    // };
-  }
-
   &__ul {
     list-style-type: none;
     display: flex;
@@ -39,26 +32,25 @@
     }
   }
   &__a {
-    color: #fff;
+    color: $white;
     font-size: 15px;
     transform: scale(.85);
     transition: transform 0.3s linear;
     font-weight: 700;
-    border-color: #fff;
+    border-color: $white;
     &--active {
-      border-color: #fff;
-      // background: #b1ff1e;
-      background: #fff;
+      border-color: $white;
+      background: $white;
       color: black;
       transform: scale(1);
       transition: transform 0.3s linear;
     }
   }
   &__a:hover {
-    border-color: #fff;
+    border-color: $white;
     transform: scale(1);
     transition: transform 0.3s linear;
-    background: #fff;
+    background: $white;
     color: black;
   }
 }

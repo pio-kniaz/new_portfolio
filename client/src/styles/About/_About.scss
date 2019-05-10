@@ -30,7 +30,7 @@
     top: 50%;
     text-align: center;
     transform: translateY(-50%);
-    color: #fff;
+    color: $white;
   }
 
   &__frame {
@@ -59,11 +59,10 @@
       color: black;
       font-size: 35px;
       strong {
-        // visibility: hidden;
         @include media-breakpoint-down(md) {
           &:after {
             content: "Front";
-            animation: spin 2s linear infinite;
+            animation: showText 8s linear infinite;
           }
         }
       }
@@ -114,33 +113,32 @@
     }
   }
   &__skills--bottom {
-    width: 350px;
-    left: 100px;
+    max-width: 100px;
+    left: 120px;
     position: absolute;
-    top: 30px;
+    top: 110px;
     text-align: center;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    // animation-name: shakeAndBlur;
-    // animation-duration: 5s;
-    // animation-iteration-count: infinite;
+    color: $white;
+    &:after {
+      content: "";
+      font-weight: bold;
+      font-size: 18px;
+      animation: frontEndTech 7s linear infinite;
+    }
   }
   &__skills--top {
-    width: 350px;
-    right: 50px;
+    max-width: 150px;
+    right: 120px;
     position: absolute;
-    bottom: 100px;
+    bottom: 110px;
     text-align: center;
-    color: #fff;
-    color: red;
-    display: flex;
-    flex-direction: column;
-    color: #141414;
-    // animation-name: shakeAndBlur;
-    // animation-duration: 4.5s;
-    // animation-iteration-count: infinite;
-    font-weight: bold;
+    color: $ownBlack;
+    &:after {
+      content: "";
+      font-weight: bold;
+      font-size: 18px;
+      animation: backEndTech 4s linear infinite;
+    }
   }
 
   &__top {
@@ -174,61 +172,122 @@
   }
 }
 
-.rubberBand {
-  animation-name: shakeAndBlur;
+@keyframes showText {
+  0% {
+    content: "Front";
+  }
+  10% {
+    content: "Back";
+  }
+  20% {
+    content: "Front";
+  }
+  30% {
+    content: "Back";
+  }
+  40% {
+    content: "Front";
+  }
+  50% {
+    content: "Back";
+  }
+  60% {
+    content: "Front";
+  }
+  70% {
+    content: "Back";
+  }
+  80% {
+    content: "Front";
+  }
+  90% {
+    content: "Back";
+  }
+  100% {
+    content: "Front";
+  }
 }
+@keyframes backEndTech {
+  0% {
+    content: "Node.js";
+    filter: blur(0px);
+  }
+  20% {
+    content: "Express.js";
+    filter: blur(1px);
+  }
+  40% {
+    content: "MongoDB";
+    filter: blur(0px);
+  }
+  60% {
+    content: "PHP";
+    filter: blur(1px);
+  }
+  80% {
+    content: "CodeIgniter";
+    filter: blur(0px);
+  }
+  100% {
+    content: "MySQL";
+    filter: blur(1px);
+  }
+}
+@keyframes frontEndTech {
+  0% {
+    content: "HTML 5";
+    filter: blur(0px);
+    color: $white;
+  }
+  10% {
+    content: "CSS";
+    filter: blur(1px);
+    color: $gold;
+  }
+  20% {
+    content: "Java Script";
+    filter: blur(0px);
+    color: $white;
+  }
+  30% {
+    content: "Git";
+    filter: blur(1px);
+    color: $gold;
+  }
+  40% {
+    content: "NPM";
+    filter: blur(0px);
+    color: $white;
+  }
+  50% {
+    content: "jQuery";
+    filter: blur(1px);
+    color: $gold;
+  }
+  60% {
+    content: "Bootstrap";
+    filter: blur(0px);
+    color: $white;
 
-// @keyframes shakeAndBlur {
-//   5%,
-//   15%,
-//   25%,
-//   35%,
-//   55%,
-//   65%,
-//   75%,
-//   95% {
-//     filter: blur(0.018em);
-//     transform: translateY(0.035em) rotate(0deg);
-//   }
-//
-//   10%,
-//   30%,
-//   40%,
-//   50%,
-//   70%,
-//   80%,
-//   90% {
-//     filter: blur(0.01em);
-//     transform: translateY(-0.035em) rotate(0deg);
-//   }
-//
-//   20%,
-//   60% {
-//     filter: blur(0.15em);
-//     transform: translate(-0.118em, 0.018em) rotate(0deg);
-//   }
-//
-//   45%,
-//   85% {
-//     filter: blur(0.2em);
-//     transform: translate(0.018em, -0.018em) rotate(0deg);
-//   }
-//
-//   100% {
-//     filter: blur(0.007em);
-//     transform: translate(0) rotate(-0.5deg);
-//   }
-// }
-@keyframes spin {
-  0% { content:"Front" }
-  10% { content:"Back" }
-  20% { content:"Front" }
-  30% { content:"Back" }
-  40% { content:"Front" }
-  50% { content: "Back" }
-  60% { content: "Front" }
-  70% { content: "Front" }
-  80% { content: "Front" }
-  90% { content: "Front" }
-  100% { content: "Front" }
+  }
+  70% {
+    content: "_lodash";
+    filter: blur(1px);
+    color: $gold;
+  }
+  90% {
+    content: "SASS";
+    filter: blur(0px);
+    color: $white;
+  }
+  80% {
+    content: "React";
+    filter: blur(1px);
+    color: $gold;
+  }
+  100% {
+    content: "Redux";
+    filter: blur(0px);
+    color: $white;
+  }
 }
