@@ -3,6 +3,7 @@ const router = express.Router();
 const Contact = require("../../models/Contact");
 const Email = require("../../models/Email");
 const contactValidationFields = require("../../validation/EmailFields");
+const contentValidationFields = require("../../validation/ContactContent");
 
 router.post("/contact", (req, res) => {
   const newContact = new Contact({
@@ -22,6 +23,34 @@ router.get("/contact", (reg, res) => {
     })
     .catch(error => {
       res.status(400).send({ message: "Unable to retrive data" });
+    });
+})
+
+router.put("/contact/:id", (req, res) => {
+  const { errors, isValid } = contentValidationFields(req.body);
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+  const idToFind = req.params.id;
+  Contact.findOneAndUpdate({ _id: idToFind })
+    .then((foundedContactObj)=> {
+      //  PL data
+      const titlePl = foundedContactObj.dataResponse[0].pl[0].title = req.body.titlePl;
+      const subtitlePl = foundedContactObj.dataResponse[0].pl[0].subtitle = req.body.subtitlePl;
+      // ENG data
+      const titleEng = foundedContactObj.dataResponse[0].eng[0].title = req.body.titleEng;
+      const subtitleEbg = foundedContactObj.dataResponse[0].eng[0].subtitle = req.body.subtitleEng;
+      // Update
+      const updateTimeStamp = foundedContactObj.updated = new Date().toString();
+      foundedContactObj.save((error)=>{
+        if (error) {
+          res.status(400).send(error);
+        }
+        res.json(updateTimeStamp)
+      })
+    })
+    .catch(error => {
+      res.status(400).send(error);
     });
 })
 

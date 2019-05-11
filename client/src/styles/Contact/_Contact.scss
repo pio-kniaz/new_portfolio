@@ -25,9 +25,11 @@
     &--form {
       background: rgba(255, 255, 255, 0.9);
       transition: background 0.4s linear;
-      &:hover {
-        background: rgba(255, 255, 255, 1);
-        transition: background 0.4s linear;
+      @include media-breakpoint-up(lg) {
+        &:hover {
+          background: rgba(255, 255, 255, 1);
+          transition: background 0.4s linear;
+        }
       }
       @include media-breakpoint-down(md) {
         position: absolute;

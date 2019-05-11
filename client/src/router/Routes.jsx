@@ -3,6 +3,7 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import AboutPage from 'page/AboutPage';
 import ProjectsPage from 'page/ProjectsPage';
 import ContactPage from 'page/ContactPage';
+import Loader from 'components/layout/component/loader/Loader';
 
 const AdminPanelPage = React.lazy(() => import('page/AdminPanelPage'));
 
@@ -16,7 +17,7 @@ const Routes = () => (
         path="/cms"
         exact
         render={() => (
-          <Suspense fallback={<div>Loading....</div>}>
+          <Suspense fallback={<Loader />}>
             <AdminPanelPage />
           </Suspense>
         )}

@@ -29,6 +29,12 @@ import {
   DELETE_EMAIL_PENDING,
   DELETE_EMAIL_REJECTED,
   DELETE_EMAIL_FULFILLED,
+  GET_CONTACT_DATA_PENDING,
+  GET_CONTACT_DATA_REJECTED,
+  GET_CONTACT_DATA_FULFILLED,
+  UPDATE_CONTACT_DATA_PENDING,
+  UPDATE_CONTACT_DATA_REJECTED,
+  UPDATE_CONTACT_DATA_FULFILLED,
 } from 'redux/actionTypes';
 
 
@@ -210,6 +216,45 @@ export const deleteEmail = id => async (dispatch) => {
   } catch (e) {
     dispatch({
       type: DELETE_EMAIL_REJECTED,
+      payload: e.response,
+    });
+  }
+};
+
+export const getContactCMS = () => async (dispatch) => {
+  dispatch({
+    type: GET_CONTACT_DATA_PENDING,
+    payload: true,
+  });
+  try {
+    const { data } = await axios.get(`${api._baseURL}/contact`);
+    dispatch({
+      type: GET_CONTACT_DATA_FULFILLED,
+      payload: data,
+    });
+  } catch (e) {
+    dispatch({
+      type: GET_CONTACT_DATA_REJECTED,
+      payload: e.response,
+    });
+  }
+};
+
+export const updateContactCMS = (values, id) => async (dispatch) => {
+  dispatch({
+    type: UPDATE_CONTACT_DATA_PENDING,
+    payload: true,
+  });
+
+  try {
+    const { data } = await axios.put(`${api._baseURL}/contact/5cc4642f88e57a14c0a89d5a`, values);
+    dispatch({
+      type: UPDATE_CONTACT_DATA_FULFILLED,
+      payload: data,
+    });
+  } catch (e) {
+    dispatch({
+      type: UPDATE_CONTACT_DATA_REJECTED,
       payload: e.response,
     });
   }

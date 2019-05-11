@@ -41,3 +41,19 @@
     color: $ownBlack;
   }
 }
+.btn__outline {
+  background-color: transparent;
+  color: $white;
+  border-top: none;
+  &:hover {
+    background-color: $white;
+    color: $ownBlack;
+  }
+  &--lg {
+    min-width: 150px;
+  }
+  &--active {
+    background: $white;
+    color: $ownBlack;
+  }
+}

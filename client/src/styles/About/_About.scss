@@ -93,9 +93,6 @@
     background: $ownBlack;
     z-index: 1;
     height: 100vh;
-    &:hover .About__skill {
-      animation: none !important;
-    }
   }
 
   &__content-body {
@@ -268,19 +265,18 @@
     content: "Bootstrap";
     filter: blur(0px);
     color: $white;
-
   }
   70% {
     content: "_lodash";
     filter: blur(1px);
     color: $gold;
   }
-  90% {
+  80% {
     content: "SASS";
     filter: blur(0px);
     color: $white;
   }
-  80% {
+  90% {
     content: "React";
     filter: blur(1px);
     color: $gold;
