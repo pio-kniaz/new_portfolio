@@ -1,13 +1,10 @@
 import React, { PureComponent } from 'react';
 import { Container } from 'reactstrap';
 import PropTypes from 'prop-types';
-import ContactCMSTable from 'components/admin-panel/component/ContactCMS/ContactCMSTable';
 import ContactCMSForm from 'components/admin-panel/component/ContactCMS/ContactCMSForm';
 
 class ContactCMS extends PureComponent {
   static propTypes = {
-    getEmails: PropTypes.func.isRequired,
-    deleteEmail: PropTypes.func.isRequired,
     updateContactCMS: PropTypes.func.isRequired,
     getContactCMS: PropTypes.func.isRequired,
     contactCMS: PropTypes.object.isRequired,
@@ -18,14 +15,10 @@ class ContactCMS extends PureComponent {
   }
 
   componentDidMount() {
-    const { getEmails, getContactCMS } = this.props;
-    (async () => {
-      await Promise.all([
-        getContactCMS(),
-        getEmails(),
-      ]);
-      await this.setState({ contactCMSReady: true });
-    })();
+    const { getContactCMS } = this.props;
+    getContactCMS().then(() => {
+      this.setState({ contactCMSReady: true });
+    });
   }
 
   initializeData = () => {
@@ -51,16 +44,15 @@ class ContactCMS extends PureComponent {
   render() {
     const {
       contactCMS: {
-        emails: {
-          emailsData, emailsFailure, emailsDeleteData, emailsDeleteFailure, emailsDeleteRequest,
+        contact: {
+          contactData, contactUpdated, contactUpdateFailure, contactUpdateRequest,
         },
-        contact: { contactData, contactUpdated, contactUpdateFailure, contactUpdateRequest },
-      }, deleteEmail, updateContactCMS,
+      }, updateContactCMS,
     } = this.props;
     const { contactCMSReady } = this.state;
     return (
       <Container>
-        {emailsData && !emailsFailure && contactCMSReady
+        {contactCMSReady
           && (
             <div className="AdminPanel__outline">
               <ContactCMSForm
@@ -70,13 +62,6 @@ class ContactCMS extends PureComponent {
                 contactUpdated={contactUpdated}
                 updateContactCMS={updateContactCMS}
                 initialValues={this.initializeData()}
-              />
-              <ContactCMSTable
-                deleteEmail={deleteEmail}
-                emails={emailsData}
-                emailsDeleteData={emailsDeleteData}
-                emailsDeleteFailure={emailsDeleteFailure}
-                emailsDeleteRequest={emailsDeleteRequest}
               />
             </div>
           )

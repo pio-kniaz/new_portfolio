@@ -29,7 +29,7 @@ class ContactForm extends React.Component {
           return Object.values(emailResponse.emailData)
             .map(errorMessage => failureToast(errorMessage));
         }
-        return successToast(emailResponse.emailData);
+        return successToast(emailResponse.emailData.message);
       });
   }
 
@@ -39,21 +39,28 @@ class ContactForm extends React.Component {
       <div className="Contact__ContactForm">
         <Form onSubmit={handleSubmit(this.sendEmailHandler)}>
           <Field
-            label={language === 'PL' ? 'Imie' : 'Your name'}
+            label={language === 'pl' ? 'Imie' : 'Your name'}
             type="text"
             name="contact_name"
             component={FormBuilder}
             validate={required}
           />
           <Field
-            label={language === 'PL' ? 'Email' : 'Your Email'}
+            label={language === 'pl' ? 'Email' : 'Your Email'}
             type="email"
             name="contact_email"
             component={FormBuilder}
             validate={[email, required]}
           />
           <Field
-            label={language === 'PL' ? 'Wiadomość' : 'Message'}
+            label={language === 'pl' ? 'Temat' : 'Subject'}
+            type="text"
+            name="contact_subject"
+            component={FormBuilder}
+            validate={required}
+          />
+          <Field
+            label={language === 'pl' ? 'Wiadomość' : 'Message'}
             type="textarea"
             name="contact_message"
             component={FormBuilder}

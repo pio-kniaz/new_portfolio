@@ -18,7 +18,6 @@
     &-row {
       position: relative;
       height: 100%;
-      overflow: hidden;
     }
   }
   &__col {
@@ -65,7 +64,7 @@
     font-size: 3rem;
   }
   &__ContactForm {
-    padding-top: 80px;
+    padding: 25px 0;
     max-width: 400px;
     margin: auto;
       input {

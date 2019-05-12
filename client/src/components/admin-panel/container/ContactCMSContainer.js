@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import ContactCMS from 'components/admin-panel/component/ContactCMS/ContactCMS';
 import {
-  getEmails, deleteEmail, getContactCMS, updateContactCMS,
+  getContactCMS, updateContactCMS,
 } from 'components/admin-panel/actions';
 
 const mapStateToProps = state => ({
@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 });
 const ContactCMSContainer = connect(
   mapStateToProps, {
-    getEmails, deleteEmail, getContactCMS, updateContactCMS,
+    getContactCMS, updateContactCMS,
   },
 )(ContactCMS);
 
