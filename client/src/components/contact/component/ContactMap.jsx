@@ -10,7 +10,7 @@ class ContactMap extends React.Component {
   state = {
     viewport: {
       width: '100%',
-      height: 700,
+      height: '100%',
       latitude: 52.22967560,
       longitude: 21.01222870,
       zoom: 13,

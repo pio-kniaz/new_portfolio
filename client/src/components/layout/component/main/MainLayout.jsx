@@ -10,7 +10,6 @@ const MainLayout = (props) => {
   };
 
   const { children } = props;
-  console.log(props);
   return (
     <>
       <ToastContainer />

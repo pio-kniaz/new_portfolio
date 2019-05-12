@@ -10,6 +10,10 @@ const EmailSchema = new Schema({
     type: String,
     required: true,
   },
+  subject: {
+    type: String,
+    required: true,
+  },
   message: {
     type: String,
     required: true,

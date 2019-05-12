@@ -78,13 +78,18 @@ class AboutCMS extends React.Component {
       aboutCMS: { aboutCMSData },
     } = this.props;
     return aboutCMSData.pl.map(elem => (
-      <Field
+      <Col
         key={elem._id}
-        label={elem.label}
-        type="textarea"
-        name={`${elem.field}`}
-        component={FormBuilder}
-      />
+        md="18"
+        xs="36"
+      >
+        <Field
+          label={elem.label}
+          type="textarea"
+          name={`${elem.field}`}
+          component={FormBuilder}
+        />
+      </Col>
     ));
   };
 
@@ -93,13 +98,18 @@ class AboutCMS extends React.Component {
       aboutCMS: { aboutCMSData },
     } = this.props;
     return aboutCMSData.eng.map(elem => (
-      <Field
+      <Col
         key={elem._id}
-        label={elem.label}
-        type="textarea"
-        name={`${elem.field}`}
-        component={FormBuilder}
-      />
+        md="18"
+        xs="36"
+      >
+        <Field
+          label={elem.label}
+          type="textarea"
+          name={`${elem.field}`}
+          component={FormBuilder}
+        />
+      </Col>
     ));
   };
 
@@ -111,10 +121,12 @@ class AboutCMS extends React.Component {
     const { activeTab } = this.state;
     return (
       <Container className="About-CMS">
-        <div tabs className="About-CMS__tabs-nav">
+        <div tabs="true" className="About-CMS__tabs-nav">
           <div>
             <Button
-              className="btn__gold btn__gold--lg"
+              className={`${activeTab}` === '1'
+                ? 'btn__outline btn__outline--lg btn__outline--active'
+                : 'btn__outline btn__outline--lg'}
               onClick={() => { this.toggle('1'); }}
             >
               PL
@@ -122,7 +134,9 @@ class AboutCMS extends React.Component {
           </div>
           <div>
             <Button
-              className="btn__gold btn__gold--lg"
+              className={`${activeTab}` === '2'
+                ? 'btn__outline btn__outline--lg btn__outline--active'
+                : 'btn__outline btn__outline--lg'}
               onClick={() => { this.toggle('2'); }}
             >
               ENG
@@ -135,14 +149,14 @@ class AboutCMS extends React.Component {
               <TabContent className="About-CMS__tab-content" activeTab={activeTab}>
                 <TabPane tabId="1">
                   <Row>
-                    <Col xs="36" className="About-CMS__pl">
+                    <Col xs="36" className="About-CMS__pl d-flex flex-wrap">
                       {this.renderFieldsPL()}
                     </Col>
                   </Row>
                 </TabPane>
                 <TabPane tabId="2">
                   <Row>
-                    <Col xs="36" className="About-CMS__cro">
+                    <Col xs="36" className="About-CMS__eng d-flex flex-wrap">
                       {this.renderFieldsENG()}
                     </Col>
                   </Row>
@@ -150,7 +164,7 @@ class AboutCMS extends React.Component {
               </TabContent>
               <Row>
                 <Col xs="36">
-                  <Button className="btn__black btn__black--noAnimation">
+                  <Button className="btn__gold">
                     Submit
                   </Button>
                 </Col>
