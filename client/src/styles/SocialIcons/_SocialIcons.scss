@@ -1,0 +1,30 @@
+.SocialIcons {
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  @include media-breakpoint-down(sm) {
+    width: 120px;
+  }
+  @include media-breakpoint-down(xs) {
+    width: 95px;
+  }
+  &__icon {
+    svg {
+      transition: color 0.3s linear;
+      color: $gold;
+      &:hover {
+        color: $white;
+        transition: color 0.3s linear;
+      }
+    }
+    @include media-breakpoint-down(sm) {
+      font-size: 13px;
+    }
+    @include media-breakpoint-down(xs) {
+      font-size: 10px;
+    }
+  }
+}
