@@ -1,7 +1,7 @@
 .btn__black {
   color: $ownBlack;
   font-size: 20px;
-  transform: scale(.85);
+  transform: scale(0.85);
   transition: transform 0.3s linear;
   font-weight: 700;
   padding: 0.475rem 0.95rem;
@@ -18,10 +18,10 @@
   &--noAnimation {
     transform: scale(1);
     &:hover {
-      background-color: rgb(177, 255, 30)!important;
+      background-color: rgb(177, 255, 30) !important;
     }
     &:active {
-      background-color: rgb(177, 255, 30)!important;
+      background-color: rgb(177, 255, 30) !important;
     }
   }
   &--lg {
@@ -38,8 +38,8 @@
         color: $ownBlack;
       }
       &:active {
-        background: $white!important;
-        color: $ownBlack!important;
+        background: $white !important;
+        color: $ownBlack !important;
       }
     }
   }

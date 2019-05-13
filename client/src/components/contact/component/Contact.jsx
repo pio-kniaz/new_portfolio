@@ -4,6 +4,7 @@ import ContactForm from 'components/contact/component/ContactForm';
 import ContactMap from 'components/contact/component/ContactMap';
 import { Row, Col } from 'reactstrap';
 import Loader from 'components/layout/component/loader/Loader';
+import SocialIcons from 'components/layout/component/social-icons/SocialIcons';
 
 class Contact extends React.Component {
   static propTypes = {
@@ -47,6 +48,7 @@ class Contact extends React.Component {
           >
             <ContactForm language={currentLanguage} sendEmail={sendEmail} emailResponse={email} />
           </Col>
+          <SocialIcons />
         </Row>
       </div>
     );
