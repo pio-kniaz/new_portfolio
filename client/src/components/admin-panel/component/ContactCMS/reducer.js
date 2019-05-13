@@ -35,7 +35,6 @@ export const reducer = (state = initialState, action) => {
         })),
       }), {});
       const updatedContent = action.payload.reduce((acc, item) => item.updated, '');
-      console.log(updatedContent, 'updatedContent');
       return {
         ...state,
         contact: {

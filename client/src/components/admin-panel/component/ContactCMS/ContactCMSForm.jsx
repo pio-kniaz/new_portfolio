@@ -38,11 +38,8 @@ class ContactCMSForm extends React.Component {
 
   updateContactFields = (values) => {
     const { contact: { _id }, updateContactCMS } = this.props;
-    console.log(_id, 'contact');
-    console.log(values, 'values');
     updateContactCMS(values, _id).then(() => {
       const { contactUpdateFailure } = this.props;
-      console.log(contactUpdateFailure, 'contactUpdateFailure');
       if (contactUpdateFailure) {
         failureToast('error');
       } else {

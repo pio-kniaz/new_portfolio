@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 const About = require("../../models/About");
 const aboutValidationFields = require("../../validation/AboutFields");
-// IDEA: this POST route its only for testing purpose
-router.post("/about", (req, res) => {
+const routeGuard = require("../../middlewares/routeGuard");
+
+router.post("/about", routeGuard.required, (req, res) => {
   const newAbout = new About({
     updated: new Date().toString(),
     dataResponse: req.body.data,
@@ -23,7 +24,7 @@ router.get("/about", (req, res) => {
       res.status(400).send({ message: "Unable to retrive data" });
     });
 });
-router.put("/about/:id", (req, res) => {
+router.put("/about/:id", routeGuard.required, (req, res) => {
 
   const { errors, isValid } = aboutValidationFields(req.body);
   if (!isValid) {

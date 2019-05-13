@@ -28,7 +28,7 @@ class FormBuilder extends PureComponent {
       input,
       label,
       placeholder,
-      meta: { touched, error, warning },
+      meta: { touched, error },
     } = this.props;
     switch (type) {
       case 'textarea':

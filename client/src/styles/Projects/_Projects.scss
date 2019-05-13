@@ -44,8 +44,8 @@
       transition: all 0.9s linear;
       transform: scale(1.3);
     }
-    &:hover .Projects__tech {
-      display: flex;
+    &--no-hover:hover {
+      transform: scale(1);
     }
   }
   &__toggle {

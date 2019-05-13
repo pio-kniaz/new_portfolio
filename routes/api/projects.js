@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Project = require("../../models/Project");
 const multer = require('multer');
+const routeGuard = require("../../middlewares/routeGuard");
 
 const upload = multer({
   limits: {
@@ -18,7 +19,7 @@ const upload = multer({
     // cb(undefined, false)
   }
 });
-router.post("/project",(req, res) => {
+router.post("/project", routeGuard.required, (req, res) => {
   const newProject = new Project({
     name: req.body.name,
     url: req.body.url,
@@ -34,7 +35,7 @@ router.post("/project",(req, res) => {
     });
 });
 
-router.put("/project/images/:id", upload.single('image'),(req, res) => {
+router.put("/project/images/:id", routeGuard.required, upload.single('image'),(req, res) => {
   Project.findByIdAndUpdate(req.params.id)
   .then((project)=>{
     project.image = req.file.buffer;
@@ -50,7 +51,7 @@ router.put("/project/images/:id", upload.single('image'),(req, res) => {
   })
 })
 
-router.post("/project/images", upload.single('upload'), async (req, res) => {
+router.post("/project/images", routeGuard.required, upload.single('upload'), async (req, res) => {
   req.project.image = req.file.buffer.toString('base64');
   await req.project.save();
   res.send();
@@ -97,7 +98,7 @@ router.get("/project/:id", (req, res) => {
     });
 });
 
-router.put("/project/:id", (req, res) => {
+router.put("/project/:id", routeGuard.required, (req, res) => {
   const id = req.params.id;
   Project.findByIdAndUpdate(id)
     .then(project => {

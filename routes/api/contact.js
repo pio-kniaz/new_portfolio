@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const router = express.Router();
 const Contact = require("../../models/Contact");
@@ -5,9 +6,9 @@ const Email = require("../../models/Email");
 const emailValidationFields = require("../../validation/EmailFields");
 const contentValidationFields = require("../../validation/ContactContent");
 const nodeMailer = require("nodemailer");
-require('dotenv').config();
+const routeGuard = require("../../middlewares/routeGuard");
 
-router.post("/contact", (req, res) => {
+router.post("/contact", routeGuard.required, (req, res) => {
   const newContact = new Contact({
     updated: new Date().toString(),
     dataResponse: req.body.data
@@ -29,7 +30,7 @@ router.get("/contact", (reg, res) => {
     });
 })
 
-router.put("/contact/:id", (req, res) => {
+router.put("/contact/:id", routeGuard.required, (req, res) => {
   const { errors, isValid } = contentValidationFields(req.body);
   if (!isValid) {
     return res.status(400).json(errors);
