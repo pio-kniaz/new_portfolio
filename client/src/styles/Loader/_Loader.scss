@@ -5,10 +5,11 @@
   bottom: 0;
   top: 0;
   z-index: 9999;
-  background: white;
+  background: $ownBlack;
   &__spinner {
     position: absolute;
     left: 50%;
     top: 50%;
+    color: $gold;
   }
 }

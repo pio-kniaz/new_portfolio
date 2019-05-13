@@ -51,11 +51,11 @@
     }
     &-title {
       text-align: center;
-      font-size: 2.5rem;
+      font-size: 1.55rem;
     }
     &-subtitle {
       text-align: center;
-      font-size: 1.7rem;
+      font-size: 1.3rem;
     }
   }
   &__map {
@@ -64,9 +64,6 @@
     right: 0;
     bottom: 0;
     top: 0;
-  }
-  &__title {
-    font-size: 3rem;
   }
   &__ContactForm {
     padding: 25px 0;
@@ -80,6 +77,7 @@
       height: 100px;
     }
     form {
+      font-weight: bold;
       @include media-breakpoint-down(sm) {
         padding: 0 20px;
         color: $white;
