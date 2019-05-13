@@ -66,7 +66,7 @@ class ContactForm extends React.Component {
             component={FormBuilder}
             validate={required}
           />
-          <Button className="mt-3 btn btn-lg btn__black">
+          <Button className="mt-3 btn btn-lg btn__black btn__black--contact-submit">
             Send
           </Button>
         </Form>

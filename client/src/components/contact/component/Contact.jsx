@@ -31,7 +31,7 @@ class Contact extends React.Component {
           <Col
             className="Contact__col Contact__col--map"
             lg="18"
-            md="36"
+            md="18"
             sm="36"
           >
             <ContactMap
@@ -42,7 +42,7 @@ class Contact extends React.Component {
           <Col
             className="Contact__col Contact__col--form"
             lg="18"
-            md="36"
+            md="18"
             sm="36"
           >
             <ContactForm language={currentLanguage} sendEmail={sendEmail} emailResponse={email} />
