@@ -29,10 +29,10 @@ class ContactMap extends React.Component {
     return (
       <div className="Contact__map">
         <MapGL
+          mapStyle="mapbox://styles/mapbox/dark-v9"
           ref={this.mapRef}
           {...viewport}
           mapboxApiAccessToken={mapAccessToken}
-          mapStyle="mapbox://styles/mapbox/dark-v9"
         >
           <div className="Contact__content">
             <p className="Contact__content-title">

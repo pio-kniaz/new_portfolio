@@ -26,7 +26,6 @@ class User extends React.Component {
       console.log('login success');
       toggle();
     }).catch((e) => {
-      console.log(e.response.data);
       console.error('ERROR');
     });
   };

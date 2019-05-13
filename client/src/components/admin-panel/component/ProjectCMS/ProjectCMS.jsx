@@ -34,7 +34,7 @@ class ProjectCMS extends React.Component {
         <div className="AdminPanel__outline">
           <ProjectNewCMS addNewProjectAction={addNewProject} />
           <Row className="Projects__row">
-            {projectsCMSData
+            {projectsCMSData && !projectsCMSReqestFailure
               && projectsCMSData
                 .map(elem => (
                   <Col
@@ -42,16 +42,21 @@ class ProjectCMS extends React.Component {
                     lg="12"
                     md="12"
                     sm="36"
-                    className="Projects__box"
-                    style={{
-                      backgroundImage: `url(${api._baseURL}/project/${elem._id}/image)`,
-                    }}
+                    className="Projects__col"
                   >
-                    <Project
-                      editable
-                      showOrHideProject={showOrHideProject}
-                      {...elem}
-                    />
+                    <div
+                      className="Projects__box Projects__box--no-hover"
+                      style={{
+                        backgroundImage: `url(${api._baseURL}/project/${elem._id}/image)`,
+                      }}
+                    >
+                      <Project
+                        editable
+                        showOrHideProject={showOrHideProject}
+                        {...elem}
+                      />
+
+                    </div>
                   </Col>
                 ))
             }
