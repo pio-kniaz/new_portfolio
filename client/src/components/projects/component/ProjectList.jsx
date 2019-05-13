@@ -38,12 +38,17 @@ class ProjectList extends React.Component {
                     lg="12"
                     md="12"
                     sm="36"
-                    className="Projects__box"
-                    style={{
-                      backgroundImage: `url(${api._baseURL}/project/${project._id}/image)`,
-                    }}
+                    className="Projects__col"
                   >
-                    <Project {...project} />
+                    <div
+                      className="Projects__box"
+                      style={{
+                        backgroundImage: `url(${api._baseURL}/project/${project._id}/image)`,
+                      }}
+                    >
+                      <Project {...project} />
+
+                    </div>
                   </Col>
                 ))
               : <Loader />

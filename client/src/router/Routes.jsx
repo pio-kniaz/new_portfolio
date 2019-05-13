@@ -11,17 +11,17 @@ const Routes = () => (
   <BrowserRouter>
     <Switch>
       <Route path="/" exact component={AboutPage} />
-      <Route path="/projects" exact component={ProjectsPage} />
-      <Route path="/contact" exact component={ContactPage} />
+      <Route path="/projects" component={ProjectsPage} />
+      <Route path="/contact" component={ContactPage} />
       <Route
         path="/cms"
-        exact
         render={() => (
           <Suspense fallback={<Loader />}>
             <AdminPanelPage />
           </Suspense>
         )}
       />
+      <Route path="/" component={AboutPage} />
     </Switch>
   </BrowserRouter>
 );

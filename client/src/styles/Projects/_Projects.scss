@@ -13,10 +13,22 @@
   &__row {
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-left: 0px;
+    @include media-breakpoint-down(md) {
+      margin-left: 50px;
+    }
+    @include media-breakpoint-down(sm) {
+      margin-left: 0px;
+    }
   }
   &__wrapper {
     justify-content: space-around;
     margin: 35px auto;
+  }
+  &__col {
+    padding-left: 0;
+    padding-right: 0;
+    overflow: hidden;
   }
   &__box {
     background-position: center;
@@ -25,11 +37,12 @@
     min-height: 38vh;
     position: relative;
     opacity: 0.6;
-    transition: all 0.3s linear;
+    transition: all 1.3s linear;
+    position: relative;
     &:hover {
       opacity: 1;
-      border: 3px solid $ownBlack;
-      transition: all 0.4s linear;
+      transition: all 0.9s linear;
+      transform: scale(1.3);
     }
     &:hover .Projects__tech {
       display: flex;
@@ -45,12 +58,15 @@
       color: red;
     }
   }
-  &__tech {
-    justify-content: space-around;
+  &__item {
     position: absolute;
-    bottom: 0;
     left: 0;
     right: 0;
-    display: none;
+    bottom: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    display: block;
   }
 }

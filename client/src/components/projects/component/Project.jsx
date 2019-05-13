@@ -15,8 +15,7 @@ const Project = (props) => {
 
   const { editable, showOrHideProject, ...elem } = props;
   return (
-    <>
-      <h3>{elem.name}</h3>
+    <a href={elem.url} target="_blank" rel="noopener noreferrer" className="Projects__item">
       {editable && (
         <>
           {elem.hidden
@@ -25,7 +24,7 @@ const Project = (props) => {
           }
         </>
       )}
-    </>
+    </a>
   );
 };
 export default Project;
