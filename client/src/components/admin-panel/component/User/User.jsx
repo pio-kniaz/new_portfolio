@@ -26,7 +26,7 @@ class User extends React.Component {
       console.log('login success');
       toggle();
     }).catch((e) => {
-      console.error('ERROR');
+      console.error(e);
     });
   };
 
@@ -40,11 +40,10 @@ class User extends React.Component {
             <Form onSubmit={handleSubmit(this.logInUserHandler)}>
               <FormGroup>
                 <Field
-                  label="Email"
+                  label="Name"
                   type="text"
-                  name="email"
-                  id="exampleEmail"
-                  placeholder="Email"
+                  name="name"
+                  placeholder="Name"
                   component={FormBuilder}
                   validate={[required]}
                 />
@@ -54,7 +53,6 @@ class User extends React.Component {
                   label="Password"
                   type="text"
                   name="password"
-                  id="examplePassword"
                   placeholder="Password"
                   component={FormBuilder}
                   validate={[required]}

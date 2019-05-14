@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
@@ -9,9 +10,11 @@ const passport = require("passport");
 const User = require("../../models/User");
 
 // @route POST api/users/register
-// @desc Register user
-// @access Public
+
 router.post("/register", (req, res) => {
+  if (req.body.secret !== process.env.SECRET) {
+    return res.status(401).json({ message: 'wrong secret key'})
+  }
   User.findOne({ email: req.body.email }).then(user => {
     if (user) {
       return res.status(400).json({ email: "Email already exists" });
@@ -42,12 +45,12 @@ router.post("/register", (req, res) => {
 // @ access Public
 
 router.post("/login", (req, res) => {
-  const email = req.body.email;
+  const name = req.body.name;
   const password = req.body.password;
 
-  User.findOne({ email }).then(user => {
+  User.findOne({ name }).then(user => {
     if (!user) {
-      return res.status(404).json({ message: "Email not found" });
+      return res.status(404).json({ message: "User not found" });
     }
     // Check password
     bcrypt.compare(password, user.password).then(isMatch => {
