@@ -2,3 +2,9 @@
   min-height: 100vh;
   overflow: hidden;
 }
+.Toast {
+  &__item {
+    background: $ownBlack;
+    color: $white;
+  }
+}

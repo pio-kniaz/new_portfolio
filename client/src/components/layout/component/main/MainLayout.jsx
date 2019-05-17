@@ -12,7 +12,10 @@ const MainLayout = (props) => {
   const { children } = props;
   return (
     <>
-      <ToastContainer />
+      <ToastContainer
+        className="Toast"
+        toastClassName="Toast__item"
+      />
       <div className="MainLayout">
         <NavigationContainer />
         <LanguageContainer />
