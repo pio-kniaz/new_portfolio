@@ -147,7 +147,7 @@ class About extends React.Component {
       currentLanguage,
     } = this.props;
     return (
-      <section className="About Blur">
+      <section className="About">
         {aboutData && !aboutFailure ? (
           <div className="About__wrapper">
             {this.customLayerRender(currentLanguage)}
