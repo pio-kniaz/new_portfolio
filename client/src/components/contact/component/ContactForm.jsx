@@ -17,20 +17,20 @@ class ContactForm extends React.Component {
   }
 
   sendEmailHandler = (values) => {
-    const { sendEmail, language } = this.props;
+    const { sendEmail, language, reset } = this.props;
     sendEmail({
       ...values,
       contact_language: language,
     })
       .then(() => {
-        const { emailResponse, reset } = this.props;
-        reset('contact');
+        const { emailResponse } = this.props;
         if (emailResponse.emailFailure) {
           return Object.values(emailResponse.emailData)
             .map(errorMessage => failureToast(errorMessage));
         }
         return successToast(emailResponse.emailData.message);
       });
+    reset('contact');
   }
 
   render() {
