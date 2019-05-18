@@ -102,7 +102,7 @@ class ProjectNewCMS extends React.Component {
         <Row noGutters className="ProjectCMS__text-inputs">
           {this.renderCheckboxes()}
           <Col xs="36">
-            <Button block className="btn__black btn__black--noAnimation">
+            <Button block className="btn__gold w-100">
               Submit
             </Button>
           </Col>
