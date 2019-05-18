@@ -24,7 +24,7 @@ class ProjectList extends React.Component {
   render() {
     const { projects } = this.props;
     return (
-      <section className="Projects Blur">
+      <section className="Projects">
         <div className="Skewed">
           <div className="Skewed__layer Skewed__bottom" />
           <div className="Skewed__layer Skewed__top" />
