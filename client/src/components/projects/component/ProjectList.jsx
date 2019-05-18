@@ -4,6 +4,7 @@ import Project from 'components/projects/component/Project';
 import PropTypes from 'prop-types';
 import api from 'api/api';
 import Loader from 'components/layout/component/loader/Loader';
+import BluredWrapper from 'hoc/BluredWrapper';
 
 class ProjectList extends React.Component {
   static propTypes = {
@@ -59,4 +60,4 @@ class ProjectList extends React.Component {
     );
   }
 }
-export default ProjectList;
+export default BluredWrapper(ProjectList);
