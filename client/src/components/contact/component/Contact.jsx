@@ -5,6 +5,7 @@ import ContactMap from 'components/contact/component/ContactMap';
 import { Row, Col } from 'reactstrap';
 import Loader from 'components/layout/component/loader/Loader';
 import SocialIcons from 'components/layout/component/social-icons/SocialIcons';
+import BluredWrapper from 'hoc/BluredWrapper';
 
 class Contact extends React.Component {
   static propTypes = {
@@ -60,7 +61,7 @@ class Contact extends React.Component {
       currentLanguage,
     } = this.props;
     return (
-      <section className="Contact Blur">
+      <section className="Contact">
         <div className="Skewed">
           <div className="Skewed__layer Skewed__bottom" />
           <div className="Skewed__layer Skewed__top" />
@@ -76,4 +77,5 @@ class Contact extends React.Component {
     );
   }
 }
-export default Contact;
+
+export default BluredWrapper(Contact);

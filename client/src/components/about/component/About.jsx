@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Loader from 'components/layout/component/loader/Loader';
+import BluredWrapper from 'hoc/BluredWrapper';
 
 class About extends React.Component {
   state = {
@@ -158,4 +159,4 @@ class About extends React.Component {
     );
   }
 }
-export default About;
+export default BluredWrapper(About);
