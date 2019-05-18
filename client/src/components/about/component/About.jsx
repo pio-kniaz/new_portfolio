@@ -7,6 +7,7 @@ class About extends React.Component {
     skew: 0,
     delta: 0,
     clientWidth: null,
+    skinpingText: 'Front',
   }
 
   static propTypes = {
@@ -29,12 +30,33 @@ class About extends React.Component {
         wrapper.addEventListener('mousemove', e => this.calculateSkew(e));
       }
     });
+    if (clientWidth < 992) {
+      this.interval = setInterval(this.textMobileAnimation, 1000);
+    }
   }
 
   componentWillUnmount() {
+    clearInterval(this.interval);
     window.removeEventListener('resize', this.updateWindowDimensions);
     const wrapper = document.querySelector('.About__wrapper');
     wrapper.removeEventListener('mousemove', e => this.calculateSkew(e));
+  }
+
+  textMobileAnimation = () => {
+    const { skinpingText, clientWidth } = this.state;
+    if (clientWidth >= 992) {
+      clearInterval(this.interval);
+      return;
+    }
+    if (skinpingText === 'Back') {
+      this.setState({
+        skinpingText: 'Front',
+      });
+    } else {
+      this.setState({
+        skinpingText: 'Back',
+      });
+    }
   }
 
 
@@ -58,7 +80,7 @@ class About extends React.Component {
     const {
       about: { aboutData },
     } = this.props;
-    const { clientWidth } = this.state;
+    const { clientWidth, skinpingText } = this.state;
     const content = aboutData[currentLanguage].reduce((acc, item) => {
       acc[item.fieldName] = item.text;
       return acc;
@@ -105,7 +127,7 @@ class About extends React.Component {
               <p>Piotr Kniaź</p>
               <span>
                 {
-                  clientWidth > 992 ? <strong>Front</strong> : <strong />
+                  clientWidth > 992 ? <strong>Front</strong> : <strong>{skinpingText}</strong>
                 }
                 {' '}
                 end Developer

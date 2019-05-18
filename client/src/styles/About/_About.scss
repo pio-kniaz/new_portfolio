@@ -58,14 +58,6 @@
       border-radius: 5px;
       color: black;
       font-size: 35px;
-      strong {
-        @include media-breakpoint-down(md) {
-          &:after {
-            content: "Front";
-            animation: showText 8s linear infinite;
-          }
-        }
-      }
     }
     @include media-breakpoint-down(md) {
       max-width: 550px;
@@ -169,41 +161,6 @@
   }
 }
 
-@keyframes showText {
-  0% {
-    content: "Front";
-  }
-  10% {
-    content: "Back";
-  }
-  20% {
-    content: "Front";
-  }
-  30% {
-    content: "Back";
-  }
-  40% {
-    content: "Front";
-  }
-  50% {
-    content: "Back";
-  }
-  60% {
-    content: "Front";
-  }
-  70% {
-    content: "Back";
-  }
-  80% {
-    content: "Front";
-  }
-  90% {
-    content: "Back";
-  }
-  100% {
-    content: "Front";
-  }
-}
 @keyframes backEndTech {
   0% {
     content: "Node.js";
