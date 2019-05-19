@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Container, Col } from 'reactstrap';
 import Project from 'components/projects/component/Project';
+import ProjectCustom from 'components/projects/component/ProjectCustom';
 import PropTypes from 'prop-types';
 import api from 'api/api';
 import Loader from 'components/layout/component/loader/Loader';
@@ -10,6 +11,7 @@ class ProjectList extends React.Component {
   static propTypes = {
     getProjects: PropTypes.func.isRequired,
     projects: PropTypes.array,
+    currentLanguage: PropTypes.bool.isRequired,
   }
 
   static defaultProps = {
@@ -22,7 +24,12 @@ class ProjectList extends React.Component {
   }
 
   render() {
-    const { projects } = this.props;
+    const { projects, currentLanguage } = this.props;
+    let customerProjectText = 'Add your project';
+    if (currentLanguage === 'pl') customerProjectText = 'Dodaj swoj projekt';
+    let customProjectText = 'Thats a few projects that I have created... many of brought to life by me projects are internal project.';
+    if (currentLanguage === 'pl') customProjectText = 'To kilka projektów, które swtworzyłem , reszta to projekty wewnetrzne.';
+
     return (
       <section className="Projects">
         <div className="Skewed">
@@ -48,12 +55,20 @@ class ProjectList extends React.Component {
                       }}
                     >
                       <Project {...project} />
-
                     </div>
                   </Col>
                 ))
               : <Loader />
             }
+            <ProjectCustom
+              className="own"
+              content={customProjectText}
+            />
+            <ProjectCustom
+              className="customer"
+              icon
+              content={customerProjectText}
+            />
           </Row>
         </Container>
       </section>
