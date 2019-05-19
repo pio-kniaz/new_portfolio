@@ -1,11 +1,10 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faSignOutAlt, faUser, faEnvelope, faBriefcase,
 } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
 
 class Navigation extends React.Component {
   state = {
